@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -23,6 +24,16 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String street;
+    @ManyToOne
+    private CityInfo cityInfo;
+
+    public CityInfo getCityInfo() {
+        return cityInfo;
+    }
+
+    public void setCityInfo(CityInfo cityInfo) {
+        this.cityInfo = cityInfo;
+    }
 
     public String getStreet() {
         return street;

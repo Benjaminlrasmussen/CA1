@@ -9,6 +9,6 @@ package facade;
  *
  * @author Peter
  */
-public interface FacadeInterface {
+public interface FacadeCompanyInterface {
     
 }

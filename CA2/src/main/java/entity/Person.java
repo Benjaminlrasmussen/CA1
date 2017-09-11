@@ -6,7 +6,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -17,6 +19,17 @@ public class Person extends InfoEntity implements Serializable {
 
     private String firstName;
     private String lastName;
+    
+    @ManyToMany
+    private List<Hobby> hobbies;
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
 
     public String getFirstName() {
         return firstName;
