@@ -5,10 +5,15 @@
  */
 package facade;
 
+import entity.Company;
+import java.util.List;
+
 /**
  *
  * @author Peter
  */
 public interface FacadeCompanyInterface {
-    
+    public Company getCompany(int cvr);
+    public List getCompanies();
+    public List getCompanies(int zipCode);
 }

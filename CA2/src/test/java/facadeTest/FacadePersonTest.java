@@ -24,7 +24,7 @@ public class FacadePersonTest {
 
     private EntityManagerFactory emf;
     final private FacadePerson fp;
-    final private String PU = "jpaPU";
+    final private String PU = "jpaPU"; //add test Database
 
     public FacadePersonTest() {
         fp = new FacadePerson();
@@ -41,7 +41,7 @@ public class FacadePersonTest {
     @Before
     public void setUp() {
         System.out.println("SetUp");
-        emf = Persistence.createEntityManagerFactory(PU);
+        emf = Persistence.createEntityManagerFactory(PU);  //add testDatabase
         fp.addEntityManagerFactory(emf);
 
         fp.addPerson(new Person("Dan", "Mark"));
