@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Peter
  */
-public interface FacadeCompanyInterface {
+public interface ICompanyMapper {
     public Company getCompany(int cvr);
     public List getAllCompanies();
     public List getCompaniesByZipcode(int zipCode);
