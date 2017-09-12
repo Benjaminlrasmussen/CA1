@@ -18,20 +18,11 @@ import javax.persistence.ManyToMany;
  * @author Peter
  */
 @Entity
-public class Hobby implements Serializable {
+public class Hobby implements Serializable
+{
 
     @ManyToMany(mappedBy = "hobbies")
     private List<Person> persons;
-
-    public List<Person> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
-    }
-
-    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,58 +31,85 @@ public class Hobby implements Serializable {
 
     private String name;
     private String description;
+    
+    public Hobby()
+    {
+    }
 
-    public String getName() {
+    public Hobby(String name, String description)
+    {
+        this.name = name;
+        this.description = description;
+    }
+
+    public List<Person> getPersons()
+    {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons)
+    {
+        this.persons = persons;
+    }
+
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
-    
-    
-    
-    public int getId() {
+
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         hash += (int) id;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object)
+    {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Hobby)) {
+        if (!(object instanceof Hobby))
+        {
             return false;
         }
         Hobby other = (Hobby) object;
-        if (this.id != other.id) {
+        if (this.id != other.id)
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Hobby{" + "id=" + id + ", name=" + name + ", description=" + description + '}';
     }
 
-
-    
 }
