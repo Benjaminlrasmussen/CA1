@@ -19,7 +19,10 @@ public class CompanyMapper implements ICompanyMapper
     @Override
     public void addCompany(Company company)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        
+        em.persist(company);
+        em.close();
     }
 
     @Override
