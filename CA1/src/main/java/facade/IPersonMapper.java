@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Peter
  */
-public interface FacadePersonInterface {
+public interface IPersonMapper {
     
     public Person getPerson(int id);
 
