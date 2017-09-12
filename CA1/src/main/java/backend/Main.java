@@ -1,12 +1,11 @@
 package backend;
 
+import java.util.HashMap;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class Main {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");
-        
-        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");        
     }
 }

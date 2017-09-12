@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  * @author Peter
  */
 public class FacadePersonTest {
-//
+
 //    static EntityManagerFactory emf;
 //    static IPersonMapper pm;
 //    static String PU = "jpaPU"; //add test Database
@@ -32,8 +32,10 @@ public class FacadePersonTest {
 //        System.out.println("SetUp");
 //        emf = Persistence.createEntityManagerFactory(PU);  //add testDatabase
 //        pm = new PersonMapper(emf);
-//
-//        pm.addPerson(new Person("Dan", "Mark"));
+//        
+//        
+//        
+//        pm.addPerson(new Person(5, "Mark"));
 //        pm.addPerson(new Person("Kaj", "Olsen"));
 //        pm.addPerson(new Person("Jens", "Madsen"));
 //    }

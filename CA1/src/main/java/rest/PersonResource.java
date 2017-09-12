@@ -31,7 +31,7 @@ public class PersonResource {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");
 
-    Facade facade = new Facade(new PersonMapper(emf), new CompanyMapper());
+    Facade facade = new Facade(emf, new PersonMapper(), new CompanyMapper());
     Gson gs = new Gson();
 
     @Context
@@ -74,9 +74,15 @@ public class PersonResource {
             JsonObject jo = new JsonObject();
             jo.addProperty("Email", person.getEmail());
             List<Phone> phoneL = person.getPhones();
+            
+            JsonArray ja2 = new JsonArray();
             for (int i = 0; i < phoneL.size(); i++) {
-                jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+                JsonObject jo2 = new JsonObject();
+                jo2.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+                ja2.add(jo);
             }
+            
+            jo.add("phoneNumbers", ja2);
             ja.add(jo);
         }
         return gs.toJson(ja);
@@ -91,11 +97,16 @@ public class PersonResource {
         JsonObject jo = new JsonObject();
         
         jo.addProperty("Email", p.getEmail());
-
+        
+        JsonArray ja2 = new JsonArray();
         List<Phone> phoneL = p.getPhones();
         for (int i = 0; i < phoneL.size(); i++) {
-            jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+            JsonObject jo2 = new JsonObject();
+            jo2.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+            ja2.add(jo2);
         }
+        
+        jo.add("phoneNumbers", ja2);
         ja.add(jo);
 
         return gs.toJson(ja);

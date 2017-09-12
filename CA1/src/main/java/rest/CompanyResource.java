@@ -4,12 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import entity.Company;
-import entity.Person;
 import entity.Phone;
 import facade.CompanyMapper;
 import facade.Facade;
 import facade.PersonMapper;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -28,8 +28,8 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("company")
 public class CompanyResource {
-    
-    Facade facade = new Facade(new PersonMapper(Persistence.createEntityManagerFactory("jpaPU")), new CompanyMapper());
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");
+    Facade facade = new Facade(emf, new PersonMapper(), new CompanyMapper());
     Gson gson = new Gson();
 
     @Context
