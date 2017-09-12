@@ -5,11 +5,12 @@ import entity.Person;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 
-public class Facade 
+public class Facade
 {
+
     private IPersonMapper personMapper;
     private ICompanyMapper companyMapper;
-    
+
     public Facade(EntityManagerFactory emf, IPersonMapper personMapper, ICompanyMapper companyMapper)
     {
         this.personMapper = personMapper;
@@ -17,7 +18,7 @@ public class Facade
         this.personMapper.addEntityManagerFactory(emf);
         this.companyMapper.addEntityManagerFactory(emf);
     }
-    
+
     public Person getPerson(int id)
     {
         return personMapper.getPerson(id);
@@ -27,7 +28,7 @@ public class Facade
     {
         return personMapper.getAllPersons();
     }
-    
+
     public List<Person> getPersonsByZipcode(int zipCode)
     {
         return personMapper.getPersonsByZipcode(zipCode);
@@ -42,22 +43,27 @@ public class Facade
     {
         personMapper.deletePerson(id);
     }
-    
+
     public void editPerson(Person person)
     {
         personMapper.editPerson(person);
     }
     
+    public void addCompany(Company company)
+    {
+        companyMapper.addCompany(company);
+    }
+
     public Company getCompany(int cvr)
     {
         return companyMapper.getCompany(cvr);
     }
-    
+
     public List getAllCompanies()
     {
         return companyMapper.getAllCompanies();
     }
-    
+
     public List getCompaniesByZipcode(int zipCode)
     {
         return companyMapper.getCompaniesByZipcode(zipCode);

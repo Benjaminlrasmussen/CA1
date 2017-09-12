@@ -24,6 +24,7 @@ import javax.ws.rs.core.MediaType;
 @Path("company")
 public class CompanyResource {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");
+    
     Facade facade = new Facade(emf, new PersonMapper(), new CompanyMapper());
     Gson gson = new Gson();
 
