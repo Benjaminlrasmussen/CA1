@@ -64,7 +64,7 @@ public class PersonResource {
         return gs.toJson(p);
     }
 
-    @Path("conactinfo")
+    @Path("contactinfo")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getContactinfo() {
@@ -82,7 +82,7 @@ public class PersonResource {
         return gs.toJson(ja);
     }
 
-    @Path("conactinfo/{id}")
+    @Path("contactinfo/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getContactinfo(@PathParam("id") int id) {
