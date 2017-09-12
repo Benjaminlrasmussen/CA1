@@ -72,8 +72,8 @@ public class PersonResource {
         JsonArray ja = new JsonArray();
         for (Person person : pl) {
             JsonObject jo = new JsonObject();
-            jo.addProperty("Email", "none email");
-            List<Phone> phoneL = person.getPhones1();
+            jo.addProperty("Email", person.getEmail());
+            List<Phone> phoneL = person.getPhones();
             for (int i = 0; i < phoneL.size(); i++) {
                 jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
             }
@@ -90,9 +90,9 @@ public class PersonResource {
         JsonArray ja = new JsonArray();
         JsonObject jo = new JsonObject();
         
-        jo.addProperty("Email", "none email");
-        
-        List<Phone> phoneL = p.getPhones1();
+        jo.addProperty("Email", p.getEmail());
+
+        List<Phone> phoneL = p.getPhones();
         for (int i = 0; i < phoneL.size(); i++) {
             jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
         }

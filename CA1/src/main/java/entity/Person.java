@@ -23,6 +23,17 @@ public class Person extends InfoEntity implements Serializable {
     @ManyToMany
     private List<Hobby> hobbies;
 
+    public Person()
+    {
+    }
+    
+    public Person(int id, List<Phone> phones, Address address, String firstName, String lastName)
+    {
+        super(id, phones, address);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public List<Hobby> getHobbies() {
         return hobbies;
     }
