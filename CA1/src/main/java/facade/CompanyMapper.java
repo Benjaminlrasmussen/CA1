@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Peter
  */
-public class CompanyMapper implements FacadeCompanyInterface {
+public class CompanyMapper implements ICompanyMapper {
 
     @Override
     public Company getCompany(int cvr)

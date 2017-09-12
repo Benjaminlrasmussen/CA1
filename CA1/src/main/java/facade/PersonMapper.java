@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Peter
  */
-public class PersonMapper implements FacadePersonInterface 
+public class PersonMapper implements IPersonMapper 
 {
 
     @Override
