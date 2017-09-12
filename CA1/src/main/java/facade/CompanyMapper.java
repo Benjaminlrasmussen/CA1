@@ -21,7 +21,11 @@ public class CompanyMapper implements ICompanyMapper
     {
         EntityManager em = emf.createEntityManager();
         
+        em.getTransaction().begin();
+        
         em.persist(company);
+        
+        em.getTransaction().commit();
         em.close();
     }
 

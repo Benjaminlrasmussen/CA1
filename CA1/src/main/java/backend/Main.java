@@ -3,6 +3,7 @@ package backend;
 import entity.Address;
 import entity.CityInfo;
 import entity.Company;
+import entity.Hobby;
 import entity.Person;
 import entity.Phone;
 import facade.CompanyMapper;
@@ -28,19 +29,25 @@ public class Main
 
         List<Phone> phones = new ArrayList();
         phones.add(new Phone(66666666, "The devil's number"));
-        Address add = new Address("Lil-marco", new CityInfo(3230, "Græsted"), "There is no additional info");
-        Person satan = (new Person(0, phones, add, "Satan", "Lucifer"));
+        phones.add(new Phone(55555555, "The devil's num"));
+        Address add = new Address("Lil-marco", new CityInfo(3230, "Graested"), "There is no additional info");
+        List<Hobby> hobbies = new ArrayList();
+        hobbies.add(new Hobby("Ged", "Leger med geder"));
+        Person satan = new Person(0, "Satan@Satanmail.com", phones, add, "Satan", "Lucifer", hobbies);
 
         List<Phone> phones2 = new ArrayList();
-        phones.add(new Phone(22332233, "Bluuup"));
+        phones2.add(new Phone(22332233, "Bluuup"));
+        phones2.add(new Phone(11334499, "kfgkskkfas"));
         Address add2 = new Address("Lil-Banana", new CityInfo(2840, "Holte"), "Joejoe");
-        Person god = (new Person(1, phones2, add2, "God", "Christ"));
+        List<Hobby> hobbies2 = new ArrayList();
+        hobbies2.add(new Hobby("Kage", "Bager kager"));
+        Person god = new Person(1, "God@Divinemail.com", phones2, add2, "God", "Christ", hobbies2);
 
         List<Phone> phones3 = new ArrayList();
-        phones.add(new Phone(88778877, "Google.com"));
+        phones3.add(new Phone(88778877, "Google.com"));
         Address add3 = new Address("Google-street 17", new CityInfo(2880, "Lyngby"), "Brrrr");
-        Company google = new Company(0, phones3, add3, "Google", "Nice google!", 99889988, 860, 1000000.00);
-        
+        Company google = new Company(0, "Google@gmail.com", phones3, add3, "Google", "Nice google!", 99889988, 860, 1000000.00);
+
         facade.addPerson(satan);
         facade.addPerson(god);
         facade.addCompany(google);

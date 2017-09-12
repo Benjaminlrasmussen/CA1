@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
@@ -20,18 +21,19 @@ public class Person extends InfoEntity implements Serializable {
     private String firstName;
     private String lastName;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Hobby> hobbies;
 
     public Person()
     {
     }
     
-    public Person(int id, List<Phone> phones, Address address, String firstName, String lastName)
+    public Person(int id, String email, List<Phone> phones, Address address, String firstName, String lastName, List<Hobby> hobbies)
     {
-        super(id, phones, address);
+        super(id, email, phones, address);
         this.firstName = firstName;
         this.lastName = lastName;
+        //this.hobbies = hobbies;
     }
 
     public List<Hobby> getHobbies() {
