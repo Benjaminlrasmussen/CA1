@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 
 /**
@@ -13,56 +14,83 @@ import javax.persistence.Entity;
  * @author Peter
  */
 @Entity
-public class Company extends InfoEntity implements Serializable {
-private String name;
-private String description;
-private int cvr;
-private int numEmployees;
-private double marketValue;
+public class Company extends InfoEntity implements Serializable
+{
 
-    public String getName() {
+    private String name;
+    private String description;
+    private int cvr;
+    private int numEmployees;
+    private double marketValue;
+
+    public Company()
+    {
+    }
+
+    public Company(String name, String description, int cvr, int numEmployees, double marketValue, int id, List<Phone> phones, Address address)
+    {
+        super(id, phones, address);
+        this.name = name;
+        this.description = description;
+        this.cvr = cvr;
+        this.numEmployees = numEmployees;
+        this.marketValue = marketValue;
+    }
+    
+    public String getName()
+    {
         return name;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Company{" + "name=" + name + ", description=" + description + ", cvr=" + cvr + ", numEmployees=" + numEmployees + ", marketValue=" + marketValue + '}';
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public int getCvr() {
+    public int getCvr()
+    {
         return cvr;
     }
 
-    public void setCvr(int cvr) {
+    public void setCvr(int cvr)
+    {
         this.cvr = cvr;
     }
 
-    public int getNumEmployees() {
+    public int getNumEmployees()
+    {
         return numEmployees;
     }
 
-    public void setNumEmployees(int numEmployees) {
+    public void setNumEmployees(int numEmployees)
+    {
         this.numEmployees = numEmployees;
     }
 
-    public double getMarketValue() {
+    public double getMarketValue()
+    {
         return marketValue;
     }
 
-    public void setMarketValue(double marketValue) {
+    public void setMarketValue(double marketValue)
+    {
         this.marketValue = marketValue;
     }
-    
+
 }
