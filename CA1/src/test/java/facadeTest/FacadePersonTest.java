@@ -6,6 +6,7 @@
 package facadeTest;
 
 import entity.Person;
+import facade.IPersonMapper;
 import facade.PersonMapper;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -23,7 +24,7 @@ import static org.junit.Assert.*;
 public class FacadePersonTest {
 
     static EntityManagerFactory emf;
-    static PersonMapper pm;
+    static IPersonMapper pm;
     static String PU = "jpaPU"; //add test Database
 
     @BeforeClass
@@ -54,7 +55,7 @@ public class FacadePersonTest {
     public void testGetPerson() {
         System.out.println("getPerson");
         Person expResult = new Person();
-        Person result = pm.getPerson();
+        Person result = pm.getPerson(0);
         assertEquals(expResult.getFirstName(), result.getFirstName());
     }
 
@@ -62,7 +63,7 @@ public class FacadePersonTest {
     public void testGetPersons() {
         System.out.println("getPerson");
         Person expResult = new Person("Dan", "Mark");
-        Person result = pm.getPerson(1l);
+        Person result = pm.getPerson(1);
         assertEquals(expResult.getFirstName(), result.getFirstName());
     }
 
@@ -70,14 +71,14 @@ public class FacadePersonTest {
     public void testAddPerson() {
         System.out.println("addPerson");
         Person expResult = new Person("Ole", "Larsen");
-        Person result = pm.addPerson(new Person("Ole", "Larsen"));
-        assertEquals(4, pm.getPersons().size());
+        pm.addPerson(new Person("Ole", "Larsen"));
+        assertEquals(4, pm.getAllPersons().size());
     }
 
     @Test
     public void testDeletePerson() {
         System.out.println("deletePerson");
-        pm.deletePerson(2l);
-        assertEquals(2, pm.getPersons().size());
+        pm.deletePerson(2);
+        assertEquals(2, pm.getAllPersons().size());
     }
 }
