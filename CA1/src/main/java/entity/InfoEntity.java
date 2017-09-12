@@ -32,11 +32,12 @@ public class InfoEntity implements Serializable {
     {
     }
 
-    public InfoEntity(int id, List<Phone> phones, Address address)
+    public InfoEntity(int id, String email, List<Phone> phones, Address address)
     {
         this.id = id;
         this.phones = phones;
         this.address = address;
+        this.email = email;
     }
 
     public String getEmail()

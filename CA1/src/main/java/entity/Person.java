@@ -28,12 +28,12 @@ public class Person extends InfoEntity implements Serializable {
     {
     }
     
-    public Person(int id, List<Phone> phones, Address address, String firstName, String lastName, List<Hobby> hobbies)
+    public Person(int id, String email, List<Phone> phones, Address address, String firstName, String lastName, List<Hobby> hobbies)
     {
-        super(id, phones, address);
+        super(id, email, phones, address);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.hobbies = hobbies;
+        //this.hobbies = hobbies;
     }
 
     public List<Hobby> getHobbies() {
