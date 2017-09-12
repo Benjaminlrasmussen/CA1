@@ -1,7 +1,11 @@
 package rest;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import entity.Company;
+import entity.Person;
+import entity.Phone;
 import facade.CompanyMapper;
 import facade.Facade;
 import facade.PersonMapper;
@@ -48,6 +52,43 @@ public class CompanyResource {
     public String getJson(@PathParam("id") int id) {
         Company company = facade.getCompany(id);
         return gson.toJson(company);
+    }
+    
+    @Path("contactinfo")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getContactinfo() {
+        List<Company> cl = facade.getAllCompanies();
+        JsonArray ja = new JsonArray();
+        for (Company company : cl) {
+            JsonObject jo = new JsonObject();
+            jo.addProperty("Email", company.getEmail());
+            List<Phone> phoneL = company.getPhones();
+            for (int i = 0; i < phoneL.size(); i++) {
+                jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+            }
+            ja.add(jo);
+        }
+        return gson.toJson(ja);
+    }
+
+    @Path("contactinfo/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getContactinfo(@PathParam("id") int id) {
+        Company c = facade.getCompany(id);
+        JsonArray ja = new JsonArray();
+        JsonObject jo = new JsonObject();
+        
+        jo.addProperty("Email", c.getEmail());
+
+        List<Phone> phoneL = c.getPhones();
+        for (int i = 0; i < phoneL.size(); i++) {
+            jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+        }
+        ja.add(jo);
+
+        return gson.toJson(ja);
     }
     
     @PUT
