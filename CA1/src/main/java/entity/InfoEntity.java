@@ -19,17 +19,43 @@ public class InfoEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
+    private String email;
+    
     @OneToMany
-    private List<Phone> phones1;
+    private List<Phone> phones;
     @ManyToOne
     private Address address;
 
-    public List<Phone> getPhones1() {
-        return phones1;
+    public InfoEntity()
+    {
     }
 
-    public void setPhones1(List<Phone> phones1) {
-        this.phones1 = phones1;
+    public InfoEntity(int id, List<Phone> phones, Address address)
+    {
+        this.id = id;
+        this.phones = phones;
+        this.address = address;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+    
+    
+    
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones1) {
+        this.phones = phones1;
     }
 
     public Address getAddress() {

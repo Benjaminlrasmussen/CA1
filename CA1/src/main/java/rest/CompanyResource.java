@@ -6,6 +6,7 @@ import facade.CompanyMapper;
 import facade.Facade;
 import facade.PersonMapper;
 import java.util.List;
+import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -24,7 +25,7 @@ import javax.ws.rs.core.MediaType;
 @Path("company")
 public class CompanyResource {
     
-    Facade facade = new Facade(new PersonMapper(), new CompanyMapper());
+    Facade facade = new Facade(new PersonMapper(Persistence.createEntityManagerFactory("jpaPU")), new CompanyMapper());
     Gson gson = new Gson();
 
     @Context
