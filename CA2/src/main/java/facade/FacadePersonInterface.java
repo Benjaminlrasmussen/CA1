@@ -7,29 +7,22 @@ package facade;
 
 import entity.Person;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
  * @author Peter
  */
 public interface FacadePersonInterface {
-
-    public void addEntityManagerFactory(EntityManagerFactory emf);
-
-    public EntityManager getEntityManager();
-
+    
     public Person getPerson(int id);
 
-    public List<Person> getPersons();
+    public List<Person> getAllPersons();
     
-    
-    public List<Person> getPersons(int zipCode);
+    public List<Person> getPersonsByZipcode(int zipCode);
 
-    public void addPerson();
+    public void addPerson(Person person);
 
-    public void deletePerson();
+    public void deletePerson(int id);
     
-    public void editPerson();
+    public void editPerson(Person person);
 }

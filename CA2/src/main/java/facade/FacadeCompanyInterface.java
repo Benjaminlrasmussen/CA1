@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface FacadeCompanyInterface {
     public Company getCompany(int cvr);
-    public List getCompanies();
-    public List getCompanies(int zipCode);
+    public List getAllCompanies();
+    public List getCompaniesByZipcode(int zipCode);
 }

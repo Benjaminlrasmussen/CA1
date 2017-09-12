@@ -7,52 +7,47 @@ package facade;
 
 import entity.Person;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
  * @author Peter
  */
-public class FacadePerson implements FacadePersonInterface {
+public class FacadePerson implements FacadePersonInterface 
+{
 
     @Override
-    public void addEntityManagerFactory(EntityManagerFactory emf) {
+    public Person getPerson(int id)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public EntityManager getEntityManager() {
+    public List<Person> getAllPersons()
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Person> getPersons() {
+    public List<Person> getPersonsByZipcode(int zipCode)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void addPerson() {
+    public void addPerson(Person person)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletePerson() {
+    public void deletePerson(int id)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void editPerson() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Person getPerson(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Person> getPersons(int zipCode) {
+    public void editPerson(Person person)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
