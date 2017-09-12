@@ -6,7 +6,7 @@
 package facadeTest;
 
 import entity.Person;
-import facade.FacadePerson;
+import facade.PersonMapper;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import org.junit.After;
@@ -22,16 +22,19 @@ import static org.junit.Assert.*;
  */
 public class FacadePersonTest {
 
-    private EntityManagerFactory emf;
-    final private FacadePerson fp;
-    final private String PU = "jpaPU"; //add test Database
-
-    public FacadePersonTest() {
-        fp = new FacadePerson();
-    }
+    static EntityManagerFactory emf;
+    static PersonMapper pm;
+    static String PU = "jpaPU"; //add test Database
 
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("SetUp");
+        emf = Persistence.createEntityManagerFactory(PU);  //add testDatabase
+        pm = new PersonMapper(emf);
+
+        pm.addPerson(new Person("Dan", "Mark"));
+        pm.addPerson(new Person("Kaj", "Olsen"));
+        pm.addPerson(new Person("Jens", "Madsen"));
     }
 
     @AfterClass
@@ -40,13 +43,6 @@ public class FacadePersonTest {
 
     @Before
     public void setUp() {
-        System.out.println("SetUp");
-        emf = Persistence.createEntityManagerFactory(PU);  //add testDatabase
-        fp.addEntityManagerFactory(emf);
-
-        fp.addPerson(new Person("Dan", "Mark"));
-        fp.addPerson(new Person("Kaj", "Olsen"));
-        fp.addPerson(new Person("Jens", "Madsen"));
 
     }
 
@@ -58,7 +54,7 @@ public class FacadePersonTest {
     public void testGetPerson() {
         System.out.println("getPerson");
         Person expResult = new Person();
-        Person result = fp.getPerson();
+        Person result = pm.getPerson();
         assertEquals(expResult.getFirstName(), result.getFirstName());
     }
 
@@ -66,7 +62,7 @@ public class FacadePersonTest {
     public void testGetPersons() {
         System.out.println("getPerson");
         Person expResult = new Person("Dan", "Mark");
-        Person result = fp.getPerson(1l);
+        Person result = pm.getPerson(1l);
         assertEquals(expResult.getFirstName(), result.getFirstName());
     }
 
@@ -74,14 +70,14 @@ public class FacadePersonTest {
     public void testAddPerson() {
         System.out.println("addPerson");
         Person expResult = new Person("Ole", "Larsen");
-        Person result = fp.addPerson(new Person("Ole", "Larsen"));
-        assertEquals(4, fp.getPersons().size());
+        Person result = pm.addPerson(new Person("Ole", "Larsen"));
+        assertEquals(4, pm.getPersons().size());
     }
 
     @Test
     public void testDeletePerson() {
         System.out.println("deletePerson");
-        fp.deletePerson(2l);
-        assertEquals(2, fp.getPersons().size());
+        pm.deletePerson(2l);
+        assertEquals(2, pm.getPersons().size());
     }
 }

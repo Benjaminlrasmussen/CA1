@@ -7,6 +7,7 @@ package facade;
 
 import entity.Person;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -15,6 +16,12 @@ import java.util.List;
 public class PersonMapper implements IPersonMapper 
 {
 
+    EntityManagerFactory emf;
+    
+    public PersonMapper(EntityManagerFactory emf){
+        this.emf = emf;
+    }
+    
     @Override
     public Person getPerson(int id)
     {
