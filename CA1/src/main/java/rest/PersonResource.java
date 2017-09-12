@@ -76,10 +76,11 @@ public class PersonResource {
             List<Phone> phoneL = person.getPhones();
             
             JsonArray ja2 = new JsonArray();
+            System.out.println(phoneL.size());
             for (int i = 0; i < phoneL.size(); i++) {
                 JsonObject jo2 = new JsonObject();
-                jo2.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
-                ja2.add(jo);
+                jo2.addProperty("phoneNumber", phoneL.get(i).getNumber());
+                ja2.add(jo2);
             }
             
             jo.add("phoneNumbers", ja2);
