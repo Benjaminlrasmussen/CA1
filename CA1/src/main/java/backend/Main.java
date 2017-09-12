@@ -40,6 +40,5 @@ public class Main
         phones.add(new Phone(88778877, "Google.com"));
         Address add3 = new Address("Google-street 17", new CityInfo(2880, "Lyngby"), "Brrrr");
         Company google = new Company(0, phones3, add3, "Google", "Nice google!", 99889988, 860, 1000000.00);
-        
     }
 }

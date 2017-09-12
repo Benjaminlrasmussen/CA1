@@ -55,13 +55,20 @@ public class CompanyResource {
     public String getContactinfo() {
         List<Company> cl = facade.getAllCompanies();
         JsonArray ja = new JsonArray();
+
         for (Company company : cl) {
             JsonObject jo = new JsonObject();
             jo.addProperty("Email", company.getEmail());
+            
+            JsonArray phoneNumbers = new JsonArray();
             List<Phone> phoneL = company.getPhones();
             for (int i = 0; i < phoneL.size(); i++) {
-                jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+                JsonObject phoneNumber = new JsonObject();
+                phoneNumber.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+                phoneNumbers.add(phoneNumber);
             }
+            
+            jo.add("phoneNumbers", phoneNumbers);
             ja.add(jo);
         }
         return gson.toJson(ja);
@@ -77,10 +84,15 @@ public class CompanyResource {
         
         jo.addProperty("Email", c.getEmail());
 
+        JsonArray phoneNumbers = new JsonArray();
         List<Phone> phoneL = c.getPhones();
         for (int i = 0; i < phoneL.size(); i++) {
-            jo.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+            JsonObject phoneNumber = new JsonObject();
+            phoneNumber.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
+            phoneNumbers.add(phoneNumber);
         }
+        
+        jo.add("phoneNumbers", phoneNumbers);
         ja.add(jo);
 
         return gson.toJson(ja);
