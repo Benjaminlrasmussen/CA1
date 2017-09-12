@@ -10,7 +10,8 @@ public class PersonMapper implements IPersonMapper
 
     EntityManagerFactory emf;
 
-    public PersonMapper(EntityManagerFactory emf)
+    @Override
+    public void addEntityManagerFactory(EntityManagerFactory emf)
     {
         this.emf = emf;
     }

@@ -2,8 +2,11 @@ package facade;
 
 import entity.Person;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 
 public interface IPersonMapper {
+    
+    public void addEntityManagerFactory(EntityManagerFactory emf);
     
     public Person getPerson(int id);
 

@@ -3,16 +3,19 @@ package facade;
 import entity.Company;
 import entity.Person;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 
 public class Facade 
 {
     private IPersonMapper personMapper;
     private ICompanyMapper companyMapper;
     
-    public Facade(IPersonMapper personMapper, ICompanyMapper companyMapper)
+    public Facade(EntityManagerFactory emf, IPersonMapper personMapper, ICompanyMapper companyMapper)
     {
         this.personMapper = personMapper;
         this.companyMapper = companyMapper;
+        this.personMapper.addEntityManagerFactory(emf);
+        this.companyMapper.addEntityManagerFactory(emf);
     }
     
     public Person getPerson(int id)

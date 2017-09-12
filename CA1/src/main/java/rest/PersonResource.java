@@ -31,7 +31,7 @@ public class PersonResource {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");
 
-    Facade facade = new Facade(new PersonMapper(emf), new CompanyMapper());
+    Facade facade = new Facade(emf, new PersonMapper(), new CompanyMapper());
     Gson gs = new Gson();
 
     @Context
