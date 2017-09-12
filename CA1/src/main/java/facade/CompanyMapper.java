@@ -13,6 +13,12 @@ public class CompanyMapper implements ICompanyMapper
     @Override
     public void addEntityManagerFactory(EntityManagerFactory emf)
     {
+        this.emf = emf;
+    }
+
+    @Override
+    public void addCompany(Company company)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

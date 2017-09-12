@@ -20,11 +20,21 @@ public class CityInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int zipCode;
     private String city;
 
+    public CityInfo()
+    {
+    }
+
+    public CityInfo(int zipCode, String city)
+    {
+        this.zipCode = zipCode;
+        this.city = city;
+    }
+    
     public int getZipCode() {
         return zipCode;
     }
