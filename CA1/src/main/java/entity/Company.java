@@ -27,7 +27,7 @@ public class Company extends InfoEntity implements Serializable
     {
     }
 
-    public Company(String name, String description, int cvr, int numEmployees, double marketValue, int id, List<Phone> phones, Address address)
+    public Company(int id, List<Phone> phones, Address address, String name, String description, int cvr, int numEmployees, double marketValue)
     {
         super(id, phones, address);
         this.name = name;
