@@ -31,7 +31,7 @@ public class PersonMapper implements IPersonMapper
     {
         EntityManager em = emf.createEntityManager();
         
-        Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number like " + phoneNumber).getSingleResult();
+        Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number like " + phoneNumber).getResultList().get(0);
         
         return p;
     }
