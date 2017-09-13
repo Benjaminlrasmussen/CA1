@@ -22,7 +22,7 @@ public class Main
     {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");
 
-        Persistence.generateSchema("jpaPU", new HashMap());
+        Persistence.generateSchema("jpaPUtest", new HashMap());
         PersonMapper pm = new PersonMapper();
         CompanyMapper cm = new CompanyMapper();
         Facade facade = new Facade(emf, pm, cm);
