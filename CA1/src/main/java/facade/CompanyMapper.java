@@ -17,16 +17,25 @@ public class CompanyMapper implements ICompanyMapper
     }
 
     @Override
-    public void addCompany(Company company)
+    public boolean addCompany(Company company)
     {
         EntityManager em = emf.createEntityManager();
-        
-        em.getTransaction().begin();
-        
-        em.persist(company);
-        
-        em.getTransaction().commit();
-        em.close();
+
+        try
+        {
+            em.getTransaction().begin();
+            em.persist(company);
+            em.getTransaction().commit();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+        finally
+        {
+            em.close();
+        }
     }
 
     @Override
@@ -34,7 +43,7 @@ public class CompanyMapper implements ICompanyMapper
     {
         EntityManager em = emf.createEntityManager();
 
-        Company found = em.find(Company.class, cvr);
+        Company found = (Company) em.createQuery("select c from Company c where c.cvr = " + cvr).getSingleResult();
 
         em.close();
         return found;

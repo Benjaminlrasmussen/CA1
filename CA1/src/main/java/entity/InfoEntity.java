@@ -14,15 +14,16 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class InfoEntity implements Serializable {
+public class InfoEntity implements Serializable
+{
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+
     private String email;
-    
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Phone> phones;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -49,54 +50,64 @@ public class InfoEntity implements Serializable {
     {
         this.email = email;
     }
-    
-    
-    
-    public List<Phone> getPhones() {
+
+    public List<Phone> getPhones()
+    {
         return phones;
     }
 
-    public void setPhones(List<Phone> phones1) {
+    public void setPhones(List<Phone> phones1)
+    {
         this.phones = phones1;
     }
 
-    public Address getAddress() {
+    public Address getAddress()
+    {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(Address address)
+    {
         this.address = address;
     }
-    public int getId() {
+
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         hash += (int) id;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object)
+    {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof InfoEntity)) {
+        if (!(object instanceof InfoEntity))
+        {
             return false;
         }
         InfoEntity other = (InfoEntity) object;
-        if (this.id != other.id) {
+        if (this.id != other.id)
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "entity.InfoEntity[ id=" + id + " ]";
     }
 

@@ -31,10 +31,6 @@ public class CompanyResource {
     @Context
     private UriInfo context;
 
-    public CompanyResource() {
-        
-    }
-
     @Path("complete")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
