@@ -1,5 +1,6 @@
 package facade;
 
+import entity.CityInfo;
 import entity.Company;
 import entity.Person;
 import java.util.List;
@@ -64,17 +65,22 @@ public class Facade
         companyMapper.addCompany(company);
     }
 
+    public boolean deleteCompany(int cvr)
+    {
+        return companyMapper.deleteCompany(cvr);
+    }
+    
     public Company getCompany(int cvr)
     {
         return companyMapper.getCompany(cvr);
     }
 
-    public List getAllCompanies()
+    public List<Company> getAllCompanies()
     {
         return companyMapper.getAllCompanies();
     }
 
-    public List getCompaniesByZipcode(int zipCode)
+    public List<Company> getCompaniesByZipcode(int zipCode)
     {
         return companyMapper.getCompaniesByZipcode(zipCode);
     }
