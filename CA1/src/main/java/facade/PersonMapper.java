@@ -30,9 +30,9 @@ public class PersonMapper implements IPersonMapper
     public Person getPersonByPhoneNumber(int phoneNumber)
     {
         EntityManager em = emf.createEntityManager();
-        
+
         Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number like " + phoneNumber).getResultList().get(0);
-        
+
         return p;
     }
 
@@ -50,20 +50,30 @@ public class PersonMapper implements IPersonMapper
     {
         EntityManager em = emf.createEntityManager();
         List<Person> persons = em.createQuery("select p from Person p").getResultList();
-        
+
         List<Person> toBeRemoved = new ArrayList();
         for (Person person : persons)
         {
             if (person.getAddress().getCityInfo().getZipCode() != zipCode)
                 toBeRemoved.add(person);
         }
-        
+
         for (Person person : toBeRemoved)
         {
             persons.remove(person);
         }
-        
+
         em.close();
+        return persons;
+    }
+
+    @Override
+    public List<Person> getPersonsByHobbies(String hobbyName)
+    {
+        EntityManager em = emf.createEntityManager();
+        
+        List<Person> persons = em.createQuery("select p from Person p join p.hobbies h where h.name like '" + hobbyName + "'").getResultList();
+        
         return persons;
     }
 

@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -19,6 +20,8 @@ public class Company extends InfoEntity implements Serializable
 
     private String name;
     private String description;
+    
+    @Column(unique = true)
     private int cvr;
     private int numEmployees;
     private double marketValue;
