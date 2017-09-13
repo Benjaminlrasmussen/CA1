@@ -1,11 +1,13 @@
-.table {display: table; width: 100%; font-family: Arial}
-.table-row {display: table-row;}
-.table-cell {display: table-cell;}
-
 header {background: cornflowerblue; color: white; padding: 5px; margin-bottom: 20px;}
 header h4 {font-weight: normal;}
 header h4 span {font-weight: bold;}
 
-select, input {padding: 10px;}
+select, input {height: 46px; padding: 0 10px;}
 
 .btn {padding: 12px; margin-top: -5px; cursor: pointer}
+
+.table {display: table; width: 100%; font-family: Arial; }
+.table-row:nth-child(odd) {background: #F8F8F8;}
+.table-row {display: table-row; }
+
+.table-cell {display: table-cell; padding: 15px;}
