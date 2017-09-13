@@ -23,13 +23,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Peter
- */
+
 public class FacadeCompanyTest {
 
-    static private String PU = "jpaPUtest";
+    private static final String PU = "jpaPUtest";
     static private PersonMapper pm;
     static private CompanyMapper cm;
     static private Facade facade;
@@ -40,20 +37,20 @@ public class FacadeCompanyTest {
 
     @BeforeClass
     public static void setUpClass() {
-//        System.out.println("SetUp");
-//        emf = Persistence.createEntityManagerFactory(PU);  //add testDatabase
-//        pm = new PersonMapper();
-//        cm = new CompanyMapper();
-//        facade = new Facade(emf, pm, cm);
-//
-//        Address address = new Address();
-//        address.setStreet("CompanyStreet");
-//        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
-//        List<Phone> phones = new ArrayList();
-//        phones.add(new Phone(3310, "first number"));
-//        phones.add(new Phone(3330, "second number"));
-//        Company company = new Company(0, "Notkia@gmail.com", phones, add, "Nokia", "We make bricks", 9999, 2234, 69.0);
-//        facade.addCompany(company);
+        System.out.println("SetUp");
+        emf = Persistence.createEntityManagerFactory(PU);  
+        pm = new PersonMapper();
+        cm = new CompanyMapper();
+        facade = new Facade(emf, pm, cm);
+
+        Address address = new Address();
+        address.setStreet("CompanyStreet");
+        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
+        List<Phone> phones = new ArrayList();
+        phones.add(new Phone(3310, "first number"));
+        phones.add(new Phone(3330, "second number"));
+        Company company = new Company(0, "Notkia@gmail.com", phones, add, "Nokia", "We make bricks", 9999, 2234, 69.0);
+        facade.addCompany(company);
 
     }
 
@@ -84,6 +81,7 @@ public class FacadeCompanyTest {
 //        int test = facade.getAllCompanies().size();
 //        
 //        assertEquals(expRes + 1, test);
+        
     }
 
     @Test
@@ -99,6 +97,6 @@ public class FacadeCompanyTest {
 //
 //        Company test = facade.getCompany(2);
 //        assertEquals(expRes.getId(), test.getId());
-//        
+        
     }
 }
