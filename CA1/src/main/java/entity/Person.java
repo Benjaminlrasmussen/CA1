@@ -33,7 +33,7 @@ public class Person extends InfoEntity implements Serializable {
         super(id, email, phones, address);
         this.firstName = firstName;
         this.lastName = lastName;
-        //this.hobbies = hobbies;
+        this.hobbies = hobbies;
     }
 
     public List<Hobby> getHobbies() {
