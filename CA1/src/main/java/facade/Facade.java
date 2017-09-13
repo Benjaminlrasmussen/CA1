@@ -24,6 +24,11 @@ public class Facade
         return personMapper.getPerson(id);
     }
 
+    public Person getPersonByPhoneNumber(int phoneNumber)
+    {
+        return personMapper.getPersonByPhoneNumber(phoneNumber);
+    }
+    
     public List<Person> getAllPersons()
     {
         return personMapper.getAllPersons();
