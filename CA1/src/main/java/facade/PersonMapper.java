@@ -1,6 +1,7 @@
 package facade;
 
 import entity.Person;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,6 +27,16 @@ public class PersonMapper implements IPersonMapper
     }
 
     @Override
+    public Person getPersonByPhoneNumber(int phoneNumber)
+    {
+        EntityManager em = emf.createEntityManager();
+        
+        Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number like " + phoneNumber).getResultList().get(0);
+        
+        return p;
+    }
+
+    @Override
     public List<Person> getAllPersons()
     {
         EntityManager em = emf.createEntityManager();
@@ -38,9 +49,22 @@ public class PersonMapper implements IPersonMapper
     public List<Person> getPersonsByZipcode(int zipCode)
     {
         EntityManager em = emf.createEntityManager();
-        List<Person> found = em.createQuery("select p from Person p where p.id = " + zipCode).getResultList();
+        List<Person> persons = em.createQuery("select p from Person p").getResultList();
+        
+        List<Person> toBeRemoved = new ArrayList();
+        for (Person person : persons)
+        {
+            if (person.getAddress().getCityInfo().getZipCode() != zipCode)
+                toBeRemoved.add(person);
+        }
+        
+        for (Person person : toBeRemoved)
+        {
+            persons.remove(person);
+        }
+        
         em.close();
-        return found;
+        return persons;
     }
 
     @Override
@@ -91,5 +115,4 @@ public class PersonMapper implements IPersonMapper
         em.getTransaction().commit();
         em.close();
     }
-
 }

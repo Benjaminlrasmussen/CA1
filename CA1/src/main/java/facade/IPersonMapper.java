@@ -9,6 +9,8 @@ public interface IPersonMapper {
     public void addEntityManagerFactory(EntityManagerFactory emf);
     
     public Person getPerson(int id);
+    
+    public Person getPersonByPhoneNumber(int phoneNumber);
 
     public List<Person> getAllPersons();
     
