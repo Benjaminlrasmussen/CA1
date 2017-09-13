@@ -1,5 +1,6 @@
 package facade;
 
+import entity.Hobby;
 import entity.Person;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -15,6 +16,8 @@ public interface IPersonMapper {
     public List<Person> getAllPersons();
     
     public List<Person> getPersonsByZipcode(int zipCode);
+    
+    public List<Person> getPersonsByHobbies(String hobbyName);
 
     public void addPerson(Person person);
 
