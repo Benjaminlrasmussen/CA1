@@ -102,43 +102,7 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@PathParam("id") int id) {
         Person person = facade.getPerson(id);
-        
-        JsonObject jo = new JsonObject();
-        jo.addProperty("id", person.getId());
-        jo.addProperty("email", person.getEmail());
-        jo.addProperty("firstname", person.getFirstName());
-        jo.addProperty("lastname", person.getLastName());
-
-        JsonObject addressObj = new JsonObject();
-        addressObj.addProperty("id", person.getAddress().getId());
-        addressObj.addProperty("street", person.getAddress().getStreet());
-        addressObj.addProperty("city", person.getAddress().getCityInfo().getCity());
-        addressObj.addProperty("zip", person.getAddress().getCityInfo().getZipCode());
-        addressObj.addProperty("info", person.getAddress().getAdditionalInfo());
-
-        jo.add("address", addressObj);
-
-        JsonArray phones = new JsonArray();
-        List<Phone> phoneL = person.getPhones();
-        for (Phone phone : phoneL) {
-            JsonObject phoneObj = new JsonObject();
-            phoneObj.addProperty("id", phone.getId());
-            phoneObj.addProperty("description", phone.getDescription());
-            phoneObj.addProperty("number", phone.getNumber());
-            phones.add(phoneObj);
-        }
-        jo.add("phones", phones);
-
-        JsonArray hobbies = new JsonArray();
-        List<Hobby> hobbyL = person.getHobbies();
-        for (Hobby hobby : hobbyL) {
-            JsonObject hobbyObj = new JsonObject();
-            hobbyObj.addProperty("id", hobby.getId());
-            hobbyObj.addProperty("name", hobby.getName());
-            hobbyObj.addProperty("description", hobby.getDescription());
-            hobbies.add(hobbyObj);
-        }
-        jo.add("hobbies", hobbies);
+        JsonObject jo = personToJson(person);
         return gs.toJson(jo);
     }
 
@@ -199,5 +163,45 @@ public class PersonResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content) {
+    }
+    
+    private JsonObject personToJson(Person person){
+        JsonObject jo = new JsonObject();
+        jo.addProperty("id", person.getId());
+        jo.addProperty("email", person.getEmail());
+        jo.addProperty("firstname", person.getFirstName());
+        jo.addProperty("lastname", person.getLastName());
+
+        JsonObject addressObj = new JsonObject();
+        addressObj.addProperty("id", person.getAddress().getId());
+        addressObj.addProperty("street", person.getAddress().getStreet());
+        addressObj.addProperty("city", person.getAddress().getCityInfo().getCity());
+        addressObj.addProperty("zip", person.getAddress().getCityInfo().getZipCode());
+        addressObj.addProperty("info", person.getAddress().getAdditionalInfo());
+
+        jo.add("address", addressObj);
+
+        JsonArray phones = new JsonArray();
+        List<Phone> phoneL = person.getPhones();
+        for (Phone phone : phoneL) {
+            JsonObject phoneObj = new JsonObject();
+            phoneObj.addProperty("id", phone.getId());
+            phoneObj.addProperty("description", phone.getDescription());
+            phoneObj.addProperty("number", phone.getNumber());
+            phones.add(phoneObj);
+        }
+        jo.add("phones", phones);
+
+        JsonArray hobbies = new JsonArray();
+        List<Hobby> hobbyL = person.getHobbies();
+        for (Hobby hobby : hobbyL) {
+            JsonObject hobbyObj = new JsonObject();
+            hobbyObj.addProperty("id", hobby.getId());
+            hobbyObj.addProperty("name", hobby.getName());
+            hobbyObj.addProperty("description", hobby.getDescription());
+            hobbies.add(hobbyObj);
+        }
+        jo.add("hobbies", hobbies);
+        return jo;
     }
 }

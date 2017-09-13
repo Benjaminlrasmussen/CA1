@@ -3,8 +3,46 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <h1>Server running</h1>
+
+        <header>
+            <div class="container">
+                <div class="row">
+                    <h4><span>Bing</span> / Search Engine v.36.1.5</h4>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="container">
+            <div class="row">
+
+                
+                <div id="search_container">
+                    <form>
+                        <select>
+                            <option>Sort on hobbies...</option>
+                        </select>
+
+                        <select>
+                            <option>Sort on zipcodes...</option>
+                        </select>
+                        
+                        <input type="number" value="0">
+                        
+                        <button class="btn btn-secondary">Sort on employee count</button>
+                    </form>
+                </div>
+
+                <div id="table_list"></div>
+
+
+            </div>
+        </div>
+
+        <script src=""></script>
     </body>
 </html>
