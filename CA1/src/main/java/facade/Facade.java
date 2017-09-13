@@ -4,6 +4,7 @@ import entity.CityInfo;
 import entity.Company;
 import entity.Person;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 public class Facade
@@ -11,6 +12,7 @@ public class Facade
 
     private IPersonMapper personMapper;
     private ICompanyMapper companyMapper;
+    private EntityManagerFactory emf;
 
     public Facade(EntityManagerFactory emf, IPersonMapper personMapper, ICompanyMapper companyMapper)
     {
@@ -18,6 +20,7 @@ public class Facade
         this.companyMapper = companyMapper;
         this.personMapper.addEntityManagerFactory(emf);
         this.companyMapper.addEntityManagerFactory(emf);
+        this.emf = emf;
     }
 
     public Person getPerson(int id)
@@ -83,5 +86,20 @@ public class Facade
     public List<Company> getCompaniesByZipcode(int zipCode)
     {
         return companyMapper.getCompaniesByZipcode(zipCode);
+    }
+    
+    public List<Company> getCompaniesWithMoreThanXEmployees(int x)
+    {
+        return companyMapper.getCompaniesWithMoreThanXEmployees(x);
+    }
+    
+    // This is just because I am lazy //
+    public List<CityInfo> getAllCityInfos()
+    {
+        EntityManager em = emf.createEntityManager();
+        
+        List<CityInfo> ciList = em.createQuery("select c from CityInfo c").getResultList();
+        
+        return ciList;
     }
 }
