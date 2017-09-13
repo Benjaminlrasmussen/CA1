@@ -37,20 +37,20 @@ public class FacadeCompanyTest {
 
     @BeforeClass
     public static void setUpClass() {
-//        System.out.println("SetUp");
-//        emf = Persistence.createEntityManagerFactory(PU);  
-//        pm = new PersonMapper();
-//        cm = new CompanyMapper();
-//        facade = new Facade(emf, pm, cm);
-//
-//        Address address = new Address();
-//        address.setStreet("CompanyStreet");
-//        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
-//        List<Phone> phones = new ArrayList();
-//        phones.add(new Phone(3310, "first number"));
-//        phones.add(new Phone(3330, "second number"));
-//        Company company = new Company(0, "Notkia@gmail.com", phones, add, "Nokia", "We make bricks", 9999, 2234, 69.0);
-//        facade.addCompany(company);
+        System.out.println("SetUp");
+        emf = Persistence.createEntityManagerFactory(PU);  
+        pm = new PersonMapper();
+        cm = new CompanyMapper();
+        facade = new Facade(emf, pm, cm);
+
+        Address address = new Address();
+        address.setStreet("CompanyStreet");
+        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
+        List<Phone> phones = new ArrayList();
+        phones.add(new Phone(3310, "first number"));
+        phones.add(new Phone(3330, "second number"));
+        Company company = new Company(0, "Notkia@gmail.com", phones, add, "Nokia", "We make bricks", 9999, 2234, 69.0);
+        facade.addCompany(company);
 
     }
 
@@ -68,35 +68,35 @@ public class FacadeCompanyTest {
 
     @Test
     public void addCompany() {
-//        int expRes = facade.getAllCompanies().size();
-//        Address address = new Address();
-//        address.setStreet("CompanyStreet");
-//        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
-//        List<Phone> phones = new ArrayList();
-//        phones.add(new Phone(3313, "first number"));
-//        phones.add(new Phone(3321, "second number"));
-//        Company company = new Company(0,"Motorola@gmail.com",phones,add,"Motorola","We make bricks",9999,130,58.2);
-//        facade.addCompany(company);
-//        
-//        int test = facade.getAllCompanies().size();
-//        
-//        assertEquals(expRes + 1, test);
+        int expRes = facade.getAllCompanies().size();
+        Address address = new Address();
+        address.setStreet("CompanyStreet");
+        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
+        List<Phone> phones = new ArrayList();
+        phones.add(new Phone(3313, "first number"));
+        phones.add(new Phone(3321, "second number"));
+        Company company = new Company(0,"Motorola@gmail.com",phones,add,"Motorola","We make stuff that doesnt work",2,130,58.2);
+        facade.addCompany(company);
+        
+        int test = facade.getAllCompanies().size();
+        facade.deleteCompany(2);
+        assertEquals(expRes + 1, test);
         
     }
 
     @Test
     public void getCompany() {
-//        Address address = new Address();
-//        address.setStreet("CompanyStreet");
-//        Address add = new Address("Delete street", new CityInfo(6633, "DeleteCity"), "Deleted");
-//        List<Phone> phones = new ArrayList();
-//        phones.add(new Phone(3310, "first number"));
-//        phones.add(new Phone(3330, "second number"));
-//        Company expRes = new Company(0, "deleteme@gmail.com", phones, add, "delete company", "We got deleted", 3, 2234, 69.0);
-//        facade.addCompany(expRes);
-//
-//        Company test = facade.getCompany(2);
-//        assertEquals(expRes.getId(), test.getId());
+        Address address = new Address();
+        address.setStreet("CompanyStreet");
+        Address add = new Address("Delete street", new CityInfo(6633, "DeleteCity"), "Deleted");
+        List<Phone> phones = new ArrayList();
+        phones.add(new Phone(3310, "first number"));
+        phones.add(new Phone(3330, "second number"));
+        Company expRes = new Company(0, "deleteme@gmail.com", phones, add, "delete company", "We got deleted", 3, 2234, 69.0);
+        facade.addCompany(expRes);
+
+        Company test = facade.getCompany(3);
+        assertEquals(expRes.getId(), test.getId());
         
     }
 }
