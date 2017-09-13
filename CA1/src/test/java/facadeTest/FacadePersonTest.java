@@ -74,11 +74,11 @@ public class FacadePersonTest {
     @Test
     public void testGetPerson() {
         
-//        System.out.println("getPerson " + facade.getAllPersons().size());
-//        Person expResult = new Person();
-//        expResult.setFirstName("Ralle");
-//        Person result = pm.getPerson(3);
-//        assertEquals(expResult.getFirstName(), result.getFirstName());
+        System.out.println("getPerson " + facade.getAllPersons().size());
+        Person expResult = new Person();
+        expResult.setFirstName("Ralle");
+        Person result = pm.getPerson(3);
+        assertEquals(expResult.getFirstName(), result.getFirstName());
     }
 
     @Test

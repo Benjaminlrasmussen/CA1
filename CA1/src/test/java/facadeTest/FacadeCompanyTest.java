@@ -37,20 +37,20 @@ public class FacadeCompanyTest {
 
     @BeforeClass
     public static void setUpClass() {
-        System.out.println("SetUp");
-        emf = Persistence.createEntityManagerFactory(PU);  
-        pm = new PersonMapper();
-        cm = new CompanyMapper();
-        facade = new Facade(emf, pm, cm);
-
-        Address address = new Address();
-        address.setStreet("CompanyStreet");
-        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
-        List<Phone> phones = new ArrayList();
-        phones.add(new Phone(3310, "first number"));
-        phones.add(new Phone(3330, "second number"));
-        Company company = new Company(0, "Notkia@gmail.com", phones, add, "Nokia", "We make bricks", 9999, 2234, 69.0);
-        facade.addCompany(company);
+//        System.out.println("SetUp");
+//        emf = Persistence.createEntityManagerFactory(PU);  
+//        pm = new PersonMapper();
+//        cm = new CompanyMapper();
+//        facade = new Facade(emf, pm, cm);
+//
+//        Address address = new Address();
+//        address.setStreet("CompanyStreet");
+//        Address add = new Address("Company street", new CityInfo(6655, "CPH"), "Busy street");
+//        List<Phone> phones = new ArrayList();
+//        phones.add(new Phone(3310, "first number"));
+//        phones.add(new Phone(3330, "second number"));
+//        Company company = new Company(0, "Notkia@gmail.com", phones, add, "Nokia", "We make bricks", 9999, 2234, 69.0);
+//        facade.addCompany(company);
 
     }
 
