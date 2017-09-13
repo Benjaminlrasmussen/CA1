@@ -15,7 +15,6 @@
       <property name="javax.persistence.jdbc.user" value="mikkel"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="mikkel1234"/>
-<<<<<<< HEAD
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
@@ -34,8 +33,6 @@
       <property name="javax.persistence.jdbc.user" value="mikkel"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="mikkel1234"/>
-=======
->>>>>>> a9c77e20197c0d26cdc4a1fa99a84d99ad3a132a
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
