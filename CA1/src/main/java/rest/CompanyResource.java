@@ -22,9 +22,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("company")
-public class CompanyResource {
+public class CompanyResource
+{
+
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaPU");
-    
+
     Facade facade = new Facade(emf, new PersonMapper(), new CompanyMapper());
     Gson gson = new Gson();
 
@@ -34,37 +36,42 @@ public class CompanyResource {
     @Path("complete")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public String getJson()
+    {
         List<Company> list = facade.getAllCompanies();
         return gson.toJson(list);
     }
-    
+
     @Path("complete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(@PathParam("id") int id) {
+    public String getJson(@PathParam("id") int id)
+    {
         Company company = facade.getCompany(id);
         return gson.toJson(company);
     }
-    
+
     @Path("contactinfo")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getContactinfo() {
+    public String getContactinfo()
+    {
         List<Company> cl = facade.getAllCompanies();
         JsonArray ja = new JsonArray();
 
-        for (Company company : cl) {
+        for (Company company : cl)
+        {
             JsonObject jo = new JsonObject();
             jo.addProperty("Email", company.getEmail());
-            
+
             JsonArray phoneNumbers = new JsonArray();
             List<Phone> phoneL = company.getPhones();
-            for (int i = 0; i < phoneL.size(); i++) {
+            for (int i = 0; i < phoneL.size(); i++)
+            {
                 JsonObject phoneNumber = new JsonObject();
                 phoneNumber.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
                 phoneNumbers.add(phoneNumber);
             }
-            
+
             jo.add("phoneNumbers", phoneNumbers);
             ja.add(jo);
         }
@@ -74,30 +81,42 @@ public class CompanyResource {
     @Path("contactinfo/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getContactinfo(@PathParam("id") int id) {
+    public String getContactinfo(@PathParam("id") int id)
+    {
         Company c = facade.getCompany(id);
         JsonArray ja = new JsonArray();
         JsonObject jo = new JsonObject();
-        
+
         jo.addProperty("Email", c.getEmail());
 
         JsonArray phoneNumbers = new JsonArray();
         List<Phone> phoneL = c.getPhones();
-        for (int i = 0; i < phoneL.size(); i++) {
+        for (int i = 0; i < phoneL.size(); i++)
+        {
             JsonObject phoneNumber = new JsonObject();
             phoneNumber.addProperty("phoneNumber" + i, phoneL.get(i).getNumber());
             phoneNumbers.add(phoneNumber);
         }
-        
+
         jo.add("phoneNumbers", phoneNumbers);
         ja.add(jo);
 
         return gson.toJson(ja);
     }
-    
+
+    @Path("employees/{x}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCompaniesWithMoreThanXEmployees(@PathParam("x") int x)
+    {
+        List<Company> companies = facade.getCompaniesWithMoreThanXEmployees(x);
+        return gson.toJson(companies);
+    }
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
-        
+    public void putJson(String content)
+    {
+
     }
 }

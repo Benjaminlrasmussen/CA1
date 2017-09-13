@@ -43,7 +43,7 @@ public class CompanyMapper implements ICompanyMapper
         EntityManager em = emf.createEntityManager();
         
         em.getTransaction().begin();
-        Company found = (Company)em.createQuery("select c from Company c where c.cvr = " + cvr);
+        Company found = (Company)em.createQuery("select c from Company c where c.cvr = " + cvr).getSingleResult();
         
         if (found != null)
         {
@@ -89,6 +89,16 @@ public class CompanyMapper implements ICompanyMapper
                 companies.remove(c);
         }
 
+        return companies;
+    }
+
+    @Override
+    public List<Company> getCompaniesWithMoreThanXEmployees(int x)
+    {
+        EntityManager em = emf.createEntityManager();
+        
+        List<Company> companies = em.createQuery("select c from Company c where c.numEmployees > " + x).getResultList();
+        
         return companies;
     }
 }
