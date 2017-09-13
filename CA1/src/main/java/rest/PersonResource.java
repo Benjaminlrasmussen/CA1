@@ -105,6 +105,15 @@ public class PersonResource {
         JsonObject jo = personToJson(person);
         return gs.toJson(jo);
     }
+    
+    @Path("phonenumber/{number}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getPersonByPhoneNumber(@PathParam("number") int number){
+        Person person = facade.getPersonByPhoneNumber(number);
+        JsonObject jo = personToJson(person);
+        return gs.toJson(jo);
+    }
 
     @Path("contactinfo")
     @GET
