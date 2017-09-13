@@ -31,11 +31,29 @@ public class CompanyMapper implements ICompanyMapper
         catch (Exception e)
         {
             return false;
-        }
-        finally
+        } finally
         {
             em.close();
         }
+    }
+
+    @Override
+    public boolean deleteCompany(int cvr)
+    {
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        Company found = (Company)em.createQuery("select c from Company c where c.cvr = " + cvr);
+        
+        if (found != null)
+        {
+            em.remove(found);
+            em.close();
+            return true;
+        }
+        
+        em.close();
+        return false;
     }
 
     @Override
@@ -73,5 +91,4 @@ public class CompanyMapper implements ICompanyMapper
 
         return companies;
     }
-
 }
