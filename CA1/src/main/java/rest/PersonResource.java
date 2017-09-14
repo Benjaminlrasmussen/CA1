@@ -68,7 +68,9 @@ public class PersonResource
     {
         Person person = facade.getPerson(id);
         JsonObject jo = personToJson(person);
-        return gs.toJson(jo);
+        JsonObject[] temp = new JsonObject[1];
+        temp[0] = jo;
+        return gs.toJson(temp);
     }
 
     @Path("phonenumber/{number}")
