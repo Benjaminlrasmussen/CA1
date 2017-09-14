@@ -1,64 +1,56 @@
 package facade;
 
 import entity.Company;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class CompanyMapper implements ICompanyMapper
-{
+public class CompanyMapper implements ICompanyMapper {
 
     private EntityManagerFactory emf;
 
     @Override
-    public void addEntityManagerFactory(EntityManagerFactory emf)
-    {
+    public void addEntityManagerFactory(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
     @Override
-    public boolean addCompany(Company company)
-    {
+    public boolean addCompany(Company company) {
         EntityManager em = emf.createEntityManager();
 
-        try
-        {
+        try {
             em.getTransaction().begin();
             em.persist(company);
             em.getTransaction().commit();
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return false;
-        } finally
-        {
+        } finally {
             em.close();
         }
     }
 
     @Override
-    public boolean deleteCompany(int cvr)
-    {
+    public boolean deleteCompany(int cvr) {
         EntityManager em = emf.createEntityManager();
-        
+
         em.getTransaction().begin();
-        Company found = (Company)em.createQuery("select c from Company c where c.cvr = " + cvr).getSingleResult();
-        
-        if (found != null)
-        {
+        Company found = (Company) em.createQuery("select c from Company c where c.cvr = " + cvr).getSingleResult();
+
+        if (found != null) {
             em.remove(found);
+            em.getTransaction().commit();
             em.close();
             return true;
         }
-        
+
         em.close();
         return false;
     }
 
     @Override
-    public Company getCompany(int cvr)
-    {
+    public Company getCompany(int cvr) {
         EntityManager em = emf.createEntityManager();
 
         Company found = (Company) em.createQuery("select c from Company c where c.cvr = " + cvr).getSingleResult();
@@ -68,8 +60,7 @@ public class CompanyMapper implements ICompanyMapper
     }
 
     @Override
-    public List getAllCompanies()
-    {
+    public List getAllCompanies() {
         EntityManager em = emf.createEntityManager();
 
         List<Company> companies = em.createQuery("select c from Company c").getResultList();
@@ -78,27 +69,27 @@ public class CompanyMapper implements ICompanyMapper
     }
 
     @Override
-    public List getCompaniesByZipcode(int zipCode)
-    {
+    public List getCompaniesByZipcode(int zipCode) {
         EntityManager em = emf.createEntityManager();
-
         List<Company> companies = em.createQuery("select c from Company c").getResultList();
-        for (Company c : companies)
-        {
-            if (c.getAddress().getCityInfo().getZipCode() != zipCode)
-                companies.remove(c);
+        List<Company> toBeRemoved = new ArrayList();
+        for (Company c : companies) {
+            if (c.getAddress().getCityInfo().getZipCode() != zipCode) {
+                toBeRemoved.add(c);
+            }
         }
-
+        for (Company c : toBeRemoved) {
+            companies.remove(c);
+        }
         return companies;
     }
 
     @Override
-    public List<Company> getCompaniesWithMoreThanXEmployees(int x)
-    {
+    public List<Company> getCompaniesWithMoreThanXEmployees(int x) {
         EntityManager em = emf.createEntityManager();
-        
+
         List<Company> companies = em.createQuery("select c from Company c where c.numEmployees > " + x).getResultList();
-        
+
         return companies;
     }
 }

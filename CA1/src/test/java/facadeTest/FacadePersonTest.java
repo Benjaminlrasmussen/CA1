@@ -16,6 +16,7 @@ import facade.ICompanyMapper;
 import facade.IPersonMapper;
 import facade.PersonMapper;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -47,15 +48,6 @@ public class FacadePersonTest {
         cm = new CompanyMapper();
         facade = new Facade(emf, pm, cm);
 
-        List<Phone> phones = new ArrayList();
-        phones.add(new Phone(3432, "first number"));
-        phones.add(new Phone(3421, "second number"));
-        Address add = new Address("1. street", new CityInfo(3723, "Nivaa"), "dont get beaten down");
-        List<Hobby> hobbies = new ArrayList();
-        hobbies.add(new Hobby("loeb", "at loebe langt"));
-        Person person = new Person(10, "1@hotmail.com", phones, add, "Ralle", "Rofus", hobbies);
-        facade.addPerson(person);
-
     }
 
     @AfterClass
@@ -65,6 +57,8 @@ public class FacadePersonTest {
     @Before
     public void setUp() {
 
+        Persistence.generateSchema(PU, new HashMap());
+
     }
 
     @After
@@ -73,24 +67,43 @@ public class FacadePersonTest {
 
     @Test
     public void testGetPerson() {
-        
+
+        List<Phone> phones = new ArrayList();
+        phones.add(new Phone(3432, "first number"));
+        phones.add(new Phone(3421, "second number"));
+        Address add = new Address("1. street", new CityInfo(3723, "Nivaa"), "dont get beaten down");
+        List<Hobby> hobbies = new ArrayList();
+        hobbies.add(new Hobby("svoemning", "at svoemme langt"));
+        Person person = new Person(11, "1@hotmail.com", phones, add, "Ralle", "Rofus", hobbies);
+        facade.addPerson(person);
+
         System.out.println("getPerson " + facade.getAllPersons().size());
         Person expResult = new Person();
         expResult.setFirstName("Ralle");
-        Person result = pm.getPerson(3);
+        Person result = pm.getPerson(11);
+
         assertEquals(expResult.getFirstName(), result.getFirstName());
     }
 
     @Test
     public void testGetPersons() {
-    List<Person> personArray = facade.getAllPersons();
+        List<Phone> phones = new ArrayList();
+        phones.add(new Phone(3432, "first number"));
+        phones.add(new Phone(3421, "second number"));
+        Address add = new Address("1. street", new CityInfo(3723, "Nivaa"), "dont get beaten down");
+        List<Hobby> hobbies = new ArrayList();
+        hobbies.add(new Hobby("ski", "staa paa ski"));
+        Person person = new Person(12, "1@hotmail.com", phones, add, "kalle", "Fipskaeg", hobbies);
+        facade.addPerson(person);
+        
+        
+        List<Person> personArray = facade.getAllPersons();
         assertTrue(!personArray.isEmpty());
     }
 
     @Test
     public void testAddPerson() {
-        
-        
+
         int expResult = facade.getAllPersons().size();
         System.out.println("addPerson");
         List<Phone> phones = new ArrayList();
@@ -99,18 +112,18 @@ public class FacadePersonTest {
         Address add = new Address("1. street", new CityInfo(3723, "Nivaa"), "dont get beaten down");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("loeb", "at loebe langt"));
-        Person person = new Person(0, "1@hotmail.com", phones, add, "Ralle", "Rofus", hobbies);
+        Person person = new Person(14, "1@hotmail.com", phones, add, "Ralle", "Rofus", hobbies);
         facade.addPerson(person);
         int test = facade.getAllPersons().size();
-        facade.deletePerson(2);
+
         assertEquals(expResult + 1, test);
-//        
+
     }
 
     @Test
     public void testDeletePerson() {
         System.out.println("deletePerson");
-        
+
         int expResult = facade.getAllPersons().size();
         System.out.println("addPerson");
         List<Phone> phones = new ArrayList();
@@ -118,34 +131,48 @@ public class FacadePersonTest {
         Address add = new Address("Delete street", new CityInfo(0102, "intetsted"), "get rect");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("whatever", "whatever"));
-        Person person = new Person(0, "2@hotmail.com", phones, add, "salli", "harry", hobbies);
+        Person person = new Person(10, "2@hotmail.com", phones, add, "salli", "harry", hobbies);
         facade.addPerson(person);
-        facade.deletePerson(1);
+        facade.deletePerson(10);
         int test = facade.getAllPersons().size();
         assertEquals(expResult, test);
     }
+
     @Test
-    public void testEditPerson(){
+    public void testEditPerson() {
         List<Phone> phones = new ArrayList();
         phones.add(new Phone(0000, "first number"));
         Address add = new Address("Delete street", new CityInfo(0102, "intetsted"), "get rect");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("whatever", "whatever"));
-        Person person = new Person(4, "2@hotmail.com", phones, add, "salli", "harry", hobbies);
+        Person person = new Person(13, "2@hotmail.com", phones, add, "salli", "harry", hobbies);
         facade.addPerson(person);
-        
+
         List<Phone> phones1 = new ArrayList();
         phones.add(new Phone(3564, "first number"));
         Address add1 = new Address("edit street", new CityInfo(0342, "nytsted"), "hvor");
         List<Hobby> hobbies1 = new ArrayList();
         hobbies.add(new Hobby("lave sig om", "at kunne lave sig om"));
-        Person edit = new Person(4, "edit@hotmail.com", phones, add, "edit", "me", hobbies);
-        
-        
-        
+        Person edit = new Person(13, "edit@hotmail.com", phones, add, "edit", "me", hobbies);
+
         facade.editPerson(edit);
-        Person test = facade.getPerson(4);
-        facade.deletePerson(4);
+        Person test = facade.getPerson(13);
+        
         assertEquals(edit, test);
     }
+    @Test
+    public void testGetPersonByPhone(){
+                List<Phone> phones = new ArrayList();
+        phones.add(new Phone(34323, "first number"));
+        phones.add(new Phone(342221, "second number"));
+        Address add = new Address("1. street", new CityInfo(3723, "Nivaa"), "dont get beaten down");
+        List<Hobby> hobbies = new ArrayList();
+        hobbies.add(new Hobby("hoppe", "at hoppe hoejt"));
+        Person expRes = new Person(15, "1@hotmail.com", phones, add, "snus", "diggerydoo", hobbies);
+        facade.addPerson(expRes);
+        
+        Person test = facade.getPersonByPhoneNumber(342221);
+        assertEquals(expRes, test);
+    }
+    
 }
