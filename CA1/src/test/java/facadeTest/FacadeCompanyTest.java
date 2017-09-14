@@ -25,6 +25,8 @@ import static org.junit.Assert.*;
 
 
 public class FacadeCompanyTest {
+    
+    /*
 
     private static final String PU = "jpaPUtest";
     static private PersonMapper pm;
@@ -99,4 +101,6 @@ public class FacadeCompanyTest {
         assertEquals(expRes.getId(), test.getId());
         
     }
+
+    */
 }
