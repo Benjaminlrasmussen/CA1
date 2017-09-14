@@ -76,7 +76,7 @@ public class ServerIntegrationTest {
     
     @Test
     public void getCompany(){
-        given().pathParam("id", 2).when().get("/api/company/complete/{id}").then().statusCode(200).body("id", hasItems(2));
+        given().pathParam("id", 9988998).when().get("/api/company/complete/{id}").then().statusCode(200).body("id", hasItems(2));
     }
     
     @Test
