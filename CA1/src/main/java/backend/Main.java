@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        populateDatabase("jpaPUB", 3);
+        populateDatabase("jpaPU", 3);
     }
 
     private static void populateDatabase(String puName, int iterations)
