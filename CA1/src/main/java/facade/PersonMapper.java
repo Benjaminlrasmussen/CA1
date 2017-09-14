@@ -33,9 +33,15 @@ public class PersonMapper implements IPersonMapper {
     {
         EntityManager em = emf.createEntityManager();
 
-        Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number like " + phoneNumber).getResultList().get(0);
-
-        return p;
+        try
+        {
+            Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number = " + phoneNumber).getSingleResult();
+            return p;
+        } catch (NoResultException e)
+        {
+            System.err.println(e);
+            return null;
+        }
     }
 
     @Override
@@ -104,10 +110,10 @@ public class PersonMapper implements IPersonMapper {
                 {
                     Hobby hobby = (Hobby) em.createQuery("select h from Hobby h where h.name like '"
                             + person.getHobbies().get(i).getName() + "'").getSingleResult();
-                    
+
                     // Sets the hobby to the one from db if found //
                     person.getHobbies().set(i, hobby);
-                    
+
                 } catch (NoResultException e)
                 {
                     System.err.println("Could not find hobby in database... creating it");
@@ -137,23 +143,19 @@ public class PersonMapper implements IPersonMapper {
     {
         EntityManager em = emf.createEntityManager();
 
-        try
+        em.getTransaction().begin();
+
+        Person found = em.find(Person.class, id);
+        if (found != null)
         {
-            em.getTransaction().begin();
-
-            Person found = em.find(Person.class, id);
-            if (found != null)
-                em.remove(found);
-
+            em.remove(found);
             em.getTransaction().commit();
-            return true;
-        } catch (Exception e)
-        {
-            return false;
-        } finally
-        {
             em.close();
+            return true;
         }
+
+        em.close();
+        return false;
     }
 
     @Override

@@ -19,8 +19,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Persistence.generateSchema("jpaPUtest", new HashMap());
-        //populateDatabase("jpaPUB", 3);
+        populateDatabase("jpaPUB", 3);
     }
 
     private static void populateDatabase(String puName, int iterations)
