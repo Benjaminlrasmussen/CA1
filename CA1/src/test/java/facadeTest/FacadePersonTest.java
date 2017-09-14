@@ -81,8 +81,8 @@ public class FacadePersonTest {
 
         List<Phone> phones = new ArrayList();
         phones.add(new Phone(3422232, "first number"));
-        phones.add(new Phone(34212222, "second number"));
-        Address add = new Address("1. street", new CityInfo(3713, "ivaa"), "mangler et n");
+        phones.add(new Phone(3421, "second number"));
+        Address add = new Address("1. street", new CityInfo(3113, "oddense"), "mangler et n");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("svoemning", "at svoemme langt"));
         Person person = new Person(100, "9@hotmail.com", phones, add, "Ralle", "Rofus", hobbies);
