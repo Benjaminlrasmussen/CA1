@@ -1,8 +1,8 @@
 var personListContainer = document.getElementById("table_list");
+var personById = document.getElementById("person_by_id");
 
 function printPersonTable(toUrl, method) {
     
-    personListContainer.innerHTML += "";
     personListContainer.innerHTML += "<div class='table' id='t_container'></div";
     var tableContainer = document.getElementById("t_container");
 
@@ -29,6 +29,7 @@ function printPersonTable(toUrl, method) {
     promise.then(function (response) {
         return response.json();
     }).then(function (data) {
+        personListContainer.innerHTML = "";
         tableContainer.innerHTML = "";
         for (var i = 0; i < data.length; i++) {
             tableContainer.innerHTML += "<div class='table-row'><div class='table-cell'>" + data[i].id + "</div>" +
@@ -48,3 +49,6 @@ function printPersonTable(toUrl, method) {
 
 printPersonTable();
 
+
+
+personById.addEventListener("click", printPersonTable, false);
