@@ -48,7 +48,7 @@ public class ServerTest {
 //    }
     @Test
     public void serverIsRunning() {
-        //given().get("http://localhost:8080/CA1/api/person/complete/1").then().statusCode(200);
+        given().get("http://localhost:8080/CA1").then().statusCode(200);
     }
 
 }
