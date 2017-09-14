@@ -40,7 +40,7 @@ public class Main {
             List<Hobby> hobbies = new ArrayList();
             hobbies.add(new Hobby("Ged", "Leger med geder"));
             hobbies.add(new Hobby("Smoke", "Ryger halm"));
-            Person satan = new Person(1, "Satan@Profanemail.66" + i, phones, add, "Satan", "Lucifer", hobbies);
+            Person satan = new Person(0 + i * 3, "Satan@Profanemail.66" + i, phones, add, "Satan", "Lucifer", hobbies);
 
             List<Phone> phones2 = new ArrayList();
             phones2.add(new Phone(22332233, "Bluuup"));
@@ -49,7 +49,7 @@ public class Main {
             List<Hobby> hobbies2 = new ArrayList();
             hobbies2.add(new Hobby("Kage", "Bager kager"));
             hobbies2.add(new Hobby("Dart", "Kaster med dværge"));
-            Person god = new Person(2, "God@Divinemail" + i + ".com", phones2, add2, "God", "Christ", hobbies2);
+            Person god = new Person(1 + i * 3, "God@Divinemail" + i + ".com", phones2, add2, "God", "Christ", hobbies2);
 
             facade.addPerson(satan);
             facade.addPerson(god);
@@ -57,7 +57,7 @@ public class Main {
             List<Phone> phones3 = new ArrayList();
             phones3.add(new Phone(88778877, "Google.com"));
             Address add3 = new Address("Google-street 17", new CityInfo(2880, "Lyngby"), "Brrrr");
-            Company google = new Company(0, "Google@gmail" + i + ".com", phones3, add3, "Google", "Nice google!", 9988998 + i, 860, 1000000.00);
+            Company google = new Company(2 + i * 3, "Google@gmail" + i + ".com", phones3, add3, "Google", "Nice google!", 9988998 + i, 860, 1000000.00);
             facade.addCompany(google);
         }
     }
