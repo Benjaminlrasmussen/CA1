@@ -77,6 +77,11 @@ public class ServerIntegrationTest {
     }
     
     @Test
+    public void getCompany(){
+        given().pathParam("id", 2).when().get("/api/company/complete/{id}").then().statusCode(200).body("id", hasItems(2));
+    }
+    
+    @Test
     public void testPut(){
         
         
@@ -103,14 +108,7 @@ public class ServerIntegrationTest {
         
         
     }
-    @Test
-    public void testGet(){
-        //GET
-        Person gottenPerson = given()
-        .contentType(ContentType.JSON)
-        .when().get("/api/person/complete/0").as(Person.class); 
-        assertNotNull(gottenPerson.getId());
-        assertEquals("Satan", gottenPerson.getFirstName());
-    }
+  
+ 
 
 }

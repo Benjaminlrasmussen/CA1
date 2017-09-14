@@ -43,6 +43,7 @@ public class CompanyResource
     }
 
     @Path("complete/{id}")
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@PathParam("id") int id)
     {
