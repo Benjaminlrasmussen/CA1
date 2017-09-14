@@ -5,9 +5,17 @@
  */
 package serverTest;
 
+import entity.Address;
+import entity.CityInfo;
+import entity.Hobby;
+import entity.Person;
+import entity.Phone;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
+import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,7 +32,7 @@ public class ServerTest {
     public static void setUpClass() {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
-        RestAssured.basePath = "/CA1/api/person/complete";
+        RestAssured.basePath = "/CA1/";
         RestAssured.defaultParser = Parser.JSON;
     }
 
@@ -53,6 +61,43 @@ public class ServerTest {
         when().get().
         then().statusCode(200);
     
+    }
+    
+    @Test
+    public void testPut(){
+        
+        
+        
+//        List<Phone> phones = new ArrayList();
+//        phones.add(new Phone(22232, "first number"));
+//        phones.add(new Phone(121, "second number"));
+//        Address add = new Address("1. street", new CityInfo(3113, "oddense"), "mangler et n");
+//        List<Hobby> hobbies = new ArrayList();
+//        hobbies.add(new Hobby("ridning", "at ride"));
+//        Person putPerson = new Person(404, "roflmaololzomg@hotmail.com", phones, add, "zinao", "zonus", hobbies);
+//        
+//        
+//        given()
+//        .contentType(ContentType.JSON)
+//        .body(putPerson)
+//        .when().put("/api/person")
+//        .as(Person.class);
+//        
+        
+        
+        //assertNotNull(newPerson.getId());
+        
+        
+        
+    }
+    @Test
+    public void testGet(){
+        //GET
+        Person gottenPerson = given()
+        .contentType(ContentType.JSON)
+        .when().get("/api/person/complete/0").as(Person.class); 
+        assertNotNull(gottenPerson.getId());
+        assertEquals("Satan", gottenPerson.getFirstName());
     }
 
 }
