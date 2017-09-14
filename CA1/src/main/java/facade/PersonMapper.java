@@ -161,20 +161,13 @@ public class PersonMapper implements IPersonMapper {
     {
         EntityManager em = emf.createEntityManager();
 
-        em.getTransaction().begin();
-
         Person found = em.find(Person.class, person.getId());
         if (found != null)
         {
-            found.setId(person.getId());
-            found.setEmail(person.getEmail());
-            found.setAddress(person.getAddress());
-            found.setPhones(person.getPhones());
-            found.setFirstName(person.getFirstName());
-            found.setLastName(person.getLastName());
+            deletePerson(found.getId());
+            addPerson(person);
         }
 
-        em.getTransaction().commit();
         em.close();
     }
 }
