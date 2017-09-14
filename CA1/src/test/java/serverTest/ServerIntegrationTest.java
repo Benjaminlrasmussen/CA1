@@ -16,6 +16,8 @@ import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.hamcrest.CoreMatchers.hasItems;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -52,7 +54,6 @@ public class ServerIntegrationTest {
     public void tearDown() {
     }
 
-    
 //    @Test
 //    public void test(){
 //        String uri = "hettp://localhost:8080/CA1/api/person/hobby/1";
@@ -60,11 +61,19 @@ public class ServerIntegrationTest {
 //    }
     @Test
     public void serverIsRunning() {
-       // given().get("http://localhost:8080/CA1/api/person/complete").then().statusCode(200);
-    given().
-        when().get().
-        then().statusCode(200);
-    
+        // given().get("http://localhost:8080/CA1/api/person/complete").then().statusCode(200);
+        given().
+                when().get().
+                then().statusCode(200);
+
+    }
+
+    @Test
+    public void getPerson() {
+        given().pathParam("id", 0).
+                when().get("/api/person/complete/{id}").
+                then().statusCode(200).
+                body("id", hasItems(0));
     }
     
     @Test
