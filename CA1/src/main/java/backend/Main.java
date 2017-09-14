@@ -49,7 +49,6 @@ public class Main
 
             facade.addPerson(satan);
             facade.addPerson(god);
-
         }
 
         List<Phone> phones3 = new ArrayList();
@@ -57,10 +56,5 @@ public class Main
         Address add3 = new Address("Google-street 17", new CityInfo(2880, "Lyngby"), "Brrrr");
         Company google = new Company(0, "Google@gmail.com", phones3, add3, "Google", "Nice google!", 99889988, 860, 1000000.00);
         facade.addCompany(google);
-
-        for (Person p : facade.getPersonsByHobbies("Ged"))
-        {
-            System.out.println(p.getFirstName());
-        }
     }
 }
