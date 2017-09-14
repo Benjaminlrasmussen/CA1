@@ -85,10 +85,10 @@ public class FacadePersonTest {
         Address add = new Address("1. street", new CityInfo(3713, "ivaa"), "mangler et n");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("svoemning", "at svoemme langt"));
-        Person person = new Person(1, "1@hotmail.com", phones, add, "Ralle", "Rofus", hobbies);
+        Person person = new Person(100, "9@hotmail.com", phones, add, "Ralle", "Rofus", hobbies);
         facade.addPerson(person);
 
-        Person result = facade.getPerson(1);
+        Person result = facade.getPerson(100);
 
         if (result == null)
             Assert.fail("Could not find person");
@@ -105,7 +105,7 @@ public class FacadePersonTest {
         Address add = new Address("1. street", new CityInfo(3113, "oddense"), "midtpaa");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("ski", "staa paa ski"));
-        Person person = new Person(12, "1@hotmail.com", phones, add, "kalle", "Fipskaeg", hobbies);
+        Person person = new Person(12, "3@hotmail.com", phones, add, "kalle", "Fipskaeg", hobbies);
         facade.addPerson(person);
         
         
@@ -159,7 +159,7 @@ public class FacadePersonTest {
         Address add = new Address("Delete street", new CityInfo(0001, "butwhy"), "just because");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("en ny hobby", "hobby"));
-        Person person = new Person(13, "2@hotmail.com", phones, add, "salli", "harry", hobbies);
+        Person person = new Person(13, "4@hotmail.com", phones, add, "salli", "harry", hobbies);
         facade.addPerson(person);
 
         List<Phone> phones1 = new ArrayList();
@@ -183,7 +183,7 @@ public class FacadePersonTest {
         Address add = new Address("1. street", new CityInfo(9923, "En by"), "dont get beaten down");
         List<Hobby> hobbies = new ArrayList();
         hobbies.add(new Hobby("hoppe", "at hoppe hoejt"));
-        Person expRes = new Person(15, "1@hotmail.com", phones, add, "snus", "diggerydoo", hobbies);
+        Person expRes = new Person(15, "16@hotmail.com", phones, add, "snus", "diggerydoo", hobbies);
         facade.addPerson(expRes);
         
         Person test = facade.getPersonByPhoneNumber(34321113);

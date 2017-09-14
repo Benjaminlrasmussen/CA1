@@ -58,13 +58,16 @@ function getList(jsonUrl, type) {
 
     var stringArray = [];
 
-    function findSub(array, location) {
+    function findSub(array, type) {
         for (var y = 0; y < array.length; y++) {
-            if (stringArray[0] !== array[y]) {
-
+            console.log("ping");
+            if (stringArray[0] == null) {
                 stringArray.push(array[y].name);
+            } else {
+                if (stringArray[y] !== array[y]) {
+                    stringArray.push(array[y].name);
+                }
             }
-
         }
         return stringArray;
     }
@@ -74,7 +77,7 @@ function getList(jsonUrl, type) {
     }).then(function (data) {
 
         for (var i = 0; i < data.length; i++) {
-            console.log(findSub(data[i].hobbies, type));
+            console.log(findSub(data[i].hobbies));
         }
         for (var key in stringArray) {
             hobbySelect.innerHTML += "<option>" + stringArray[key] + "</option>";
@@ -98,7 +101,7 @@ personById.addEventListener("click", function () {
 hobbySelect.addEventListener("change", function () {
     if (hobbySelect.value !== "Sort on hobbies...") {
         printPersonTable("http://localhost:8080/CA1/api/person/hobby/" + hobbySelect.value, "GET");
-    }else{
+    } else {
         printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
     }
 });
