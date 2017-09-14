@@ -60,11 +60,17 @@ function getList(jsonUrl, type) {
 
     function findSub(array, type) {
         for (var y = 0; y < array.length; y++) {
-            console.log("ping");
             if (stringArray[0] == null) {
+                console.log("ping");
                 stringArray.push(array[y].name);
             } else {
-                if (stringArray[y] !== array[y]) {
+                var isHere = false;
+                for (var i = 0; i < stringArray.length; i++) {
+                    if (stringArray[i] === array[y].name) {
+                        isHere = true;
+                    }
+                }
+                if (isHere === false) {
                     stringArray.push(array[y].name);
                 }
             }
