@@ -38,6 +38,8 @@ public class FacadePersonTest {
     static String PU = "jpaPUtest"; //add test Database
     static Facade facade;
     static ICompanyMapper cm;
+    
+    /*
 
     @BeforeClass
     public static void setUpClass() {
@@ -160,6 +162,7 @@ public class FacadePersonTest {
         
         assertEquals(edit, test);
     }
+<<<<<<< HEAD
     @Test
     public void testGetPersonByPhone(){
                 List<Phone> phones = new ArrayList();
@@ -175,4 +178,8 @@ public class FacadePersonTest {
         assertEquals(expRes, test);
     }
     
+=======
+
+    */
+>>>>>>> fd2516a8d2a37f48f5f6195292f4b46682bbd7d3
 }

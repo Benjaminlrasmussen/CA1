@@ -19,9 +19,9 @@ public interface IPersonMapper {
     
     public List<Person> getPersonsByHobbies(String hobbyName);
 
-    public void addPerson(Person person);
+    public boolean addPerson(Person person);
 
-    public void deletePerson(int id);
+    public boolean deletePerson(int id);
     
     public void editPerson(Person person);
 }

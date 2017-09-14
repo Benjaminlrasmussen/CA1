@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\backend\Main.java
 C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\Person.java
 C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\facade\CompanyMapper.java
@@ -15,3 +16,22 @@ C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\InfoEntity.java
 C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\facade\IPersonMapper.java
 C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\rest\ZipcodeResource.java
 C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\rest\PersonResource.java
+=======
+D:\Git\CA1\CA1\src\main\java\rest\PersonResource.java
+D:\Git\CA1\CA1\src\main\java\entity\InfoEntity.java
+D:\Git\CA1\CA1\src\main\java\backend\Main.java
+D:\Git\CA1\CA1\src\main\java\rest\ZipcodeResource.java
+D:\Git\CA1\CA1\src\main\java\entity\CityInfo.java
+D:\Git\CA1\CA1\src\main\java\facade\CompanyMapper.java
+D:\Git\CA1\CA1\src\main\java\entity\Phone.java
+D:\Git\CA1\CA1\src\main\java\entity\Company.java
+D:\Git\CA1\CA1\src\main\java\rest\CompanyResource.java
+D:\Git\CA1\CA1\src\main\java\facade\Facade.java
+D:\Git\CA1\CA1\src\main\java\entity\Address.java
+D:\Git\CA1\CA1\src\main\java\rest\ApplicationConfig.java
+D:\Git\CA1\CA1\src\main\java\facade\ICompanyMapper.java
+D:\Git\CA1\CA1\src\main\java\entity\Person.java
+D:\Git\CA1\CA1\src\main\java\facade\PersonMapper.java
+D:\Git\CA1\CA1\src\main\java\entity\Hobby.java
+D:\Git\CA1\CA1\src\main\java\facade\IPersonMapper.java
+>>>>>>> fd2516a8d2a37f48f5f6195292f4b46682bbd7d3

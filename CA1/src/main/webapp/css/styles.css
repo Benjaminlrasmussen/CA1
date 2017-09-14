@@ -4,9 +4,11 @@ header h4 span {font-weight: bold;}
 
 select, input {height: 46px; padding: 0 10px;}
 
+input[type=number] {width: 70px; margin-right: 5px;}
+
 .btn {padding: 12px; margin-top: -5px; cursor: pointer}
 
-.table {display: table; width: 100%; font-family: Arial; }
+.table {display: table; width: 100%; font-family: Arial;}
 .table-row:nth-child(odd) {background: #F8F8F8;}
 .table-row {display: table-row; }
 

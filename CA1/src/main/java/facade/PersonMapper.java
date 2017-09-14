@@ -6,8 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class PersonMapper implements IPersonMapper
-{
+public class PersonMapper implements IPersonMapper {
 
     EntityManagerFactory emf;
 
@@ -71,37 +70,56 @@ public class PersonMapper implements IPersonMapper
     public List<Person> getPersonsByHobbies(String hobbyName)
     {
         EntityManager em = emf.createEntityManager();
-        
+
         List<Person> persons = em.createQuery("select p from Person p join p.hobbies h where h.name like '" + hobbyName + "'").getResultList();
-        
+
         return persons;
     }
 
     @Override
-    public void addPerson(Person person)
+    public boolean addPerson(Person person)
     {
         EntityManager em = emf.createEntityManager();
 
-        em.getTransaction().begin();
-        em.persist(person);
-        em.getTransaction().commit();
+        try
+        {
+            em.getTransaction().begin();
+            em.persist(person);
+            em.getTransaction().commit();
 
-        em.close();
+            return true;
+        } catch (Exception e)
+        {
+            return false;
+        } finally
+        {
+            em.close();
+        }
     }
 
     @Override
-    public void deletePerson(int id)
+    public boolean deletePerson(int id)
     {
         EntityManager em = emf.createEntityManager();
 
-        em.getTransaction().begin();
+        try
+        {
+            em.getTransaction().begin();
 
-        Person found = em.find(Person.class, id);
-        if (found != null)
-            em.remove(found);
+            Person found = em.find(Person.class, id);
+            if (found != null)
+                em.remove(found);
 
-        em.getTransaction().commit();
-        em.close();
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception e)
+        {
+            return false;
+        }
+        finally
+        {
+            em.close();
+        }
     }
 
     @Override
