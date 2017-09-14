@@ -37,6 +37,8 @@ public class FacadePersonTest {
     static String PU = "jpaPUtest"; //add test Database
     static Facade facade;
     static ICompanyMapper cm;
+    
+    /*
 
     @BeforeClass
     public static void setUpClass() {
@@ -148,4 +150,6 @@ public class FacadePersonTest {
         facade.deletePerson(4);
         assertEquals(edit, test);
     }
+
+    */
 }

@@ -1,12 +1,11 @@
 var personListContainer = document.getElementById("table_list");
+var personById = document.getElementById("person_by_id");
 
-function printPersonTable() {
+function printPersonTable(toUrl, method) {
+    
 
-    personListContainer.innerHTML += "<div class='table' id='t_container'></div";
-    var tableContainer = document.getElementById("t_container");
-
-    var url = "http://localhost:8080/CA1/api/person/complete/";
-    var conf = {method: "get"};
+    var url = toUrl;
+    var conf = {method: method};
     var promise = fetch(url, conf);
 
     function printSub(array, location) {
@@ -28,7 +27,10 @@ function printPersonTable() {
     promise.then(function (response) {
         return response.json();
     }).then(function (data) {
-
+        personListContainer.innerHTML = "";
+        personListContainer.innerHTML += "<div class='table' id='t_container'></div";
+        var tableContainer = document.getElementById("t_container");
+        tableContainer.innerHTML = "";
         for (var i = 0; i < data.length; i++) {
             tableContainer.innerHTML += "<div class='table-row'><div class='table-cell'>" + data[i].id + "</div>" +
                     "<div class='table-cell'>" + data[i].email + "</div>" +
@@ -45,5 +47,8 @@ function printPersonTable() {
 
 }
 
-printPersonTable();
+printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
 
+
+
+personById.addEventListener("click", printPersonTable("http://localhost:8080/CA1/api/person/complete/" + 1, "GET"), false);

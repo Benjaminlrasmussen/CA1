@@ -35,6 +35,7 @@ public class Main
             Address add = new Address("Lil-marco", new CityInfo(3230, "Graested"), "There is no additional info");
             List<Hobby> hobbies = new ArrayList();
             hobbies.add(new Hobby("Ged", "Leger med geder"));
+            hobbies.add(new Hobby("Smoke", "Ryger halm"));
             Person satan = new Person(0, "Satan@Profanemail.666", phones, add, "Satan", "Lucifer", hobbies);
 
             List<Phone> phones2 = new ArrayList();
@@ -43,6 +44,7 @@ public class Main
             Address add2 = new Address("Lil-Banana", new CityInfo(2840, "Holte"), "Joejoe");
             List<Hobby> hobbies2 = new ArrayList();
             hobbies2.add(new Hobby("Kage", "Bager kager"));
+            hobbies2.add(new Hobby("Dart", "Kaster med dværge"));
             Person god = new Person(1, "God@Divinemail.com", phones2, add2, "God", "Christ", hobbies2);
 
             facade.addPerson(satan);
