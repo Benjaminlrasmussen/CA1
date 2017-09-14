@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Git\CA1\CA1\src\main\java\rest\PersonResource.java
 D:\Git\CA1\CA1\src\main\java\entity\InfoEntity.java
 D:\Git\CA1\CA1\src\main\java\backend\Main.java
@@ -15,3 +16,22 @@ D:\Git\CA1\CA1\src\main\java\entity\Person.java
 D:\Git\CA1\CA1\src\main\java\facade\PersonMapper.java
 D:\Git\CA1\CA1\src\main\java\entity\Hobby.java
 D:\Git\CA1\CA1\src\main\java\facade\IPersonMapper.java
+=======
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\backend\Main.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\CompanyResource.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\CityInfo.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Person.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\Facade.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\PersonResource.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\IPersonMapper.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Phone.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\ICompanyMapper.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\ZipcodeResource.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Company.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\CompanyMapper.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\ApplicationConfig.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Hobby.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\InfoEntity.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Address.java
+C:\Users\craci\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\PersonMapper.java
+>>>>>>> 3c60260613fa02761a670b5ba6139a8b2a6b62b5
