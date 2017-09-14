@@ -48,7 +48,10 @@ public class CompanyResource
     public String getJson(@PathParam("id") int id)
     {
         Company company = facade.getCompany(id);
-        return gson.toJson(company);
+        JsonObject jasonObject = companyToJson(company);  //LOOK AT THE NAMES JOACHIM !!! LOOOK!!!
+        JsonObject[] jasonArray = new JsonObject[1];
+        jasonArray[0] = jasonObject;
+        return gson.toJson(jasonArray);
     }
 
     @Path("contactinfo")
@@ -60,6 +63,7 @@ public class CompanyResource
         JsonArray ja = new JsonArray();
 
         for (Company company : cl)
+            
         {
             JsonObject jo = new JsonObject();
             jo.addProperty("Email", company.getEmail());
@@ -120,4 +124,40 @@ public class CompanyResource
     {
 
     }
+    
+    private JsonObject companyToJson(Company company)
+    {
+        JsonObject jo = new JsonObject();
+        jo.addProperty("id", company.getId());
+        jo.addProperty("email", company.getEmail());
+        jo.addProperty("name", company.getName());
+        jo.addProperty("cvr", company.getCvr());
+        jo.addProperty("description", company.getDescription());
+        jo.addProperty("marketvalue", company.getMarketValue());
+        jo.addProperty("employees", company.getNumEmployees());
+
+        JsonObject addressObj = new JsonObject();
+        addressObj.addProperty("id", company.getAddress().getId());
+        addressObj.addProperty("street", company.getAddress().getStreet());
+        addressObj.addProperty("city", company.getAddress().getCityInfo().getCity());
+        addressObj.addProperty("zip", company.getAddress().getCityInfo().getZipCode());
+        addressObj.addProperty("info", company.getAddress().getAdditionalInfo());
+
+        jo.add("address", addressObj);
+
+        JsonArray phones = new JsonArray();
+        List<Phone> phoneL = company.getPhones();
+        for (Phone phone : phoneL)
+        {
+            JsonObject phoneObj = new JsonObject();
+            phoneObj.addProperty("id", phone.getId());
+            phoneObj.addProperty("description", phone.getDescription());
+            phoneObj.addProperty("number", phone.getNumber());
+            phones.add(phoneObj);
+        }
+        jo.add("phones", phones);
+
+        return jo;
+    }
+    
 }

@@ -80,6 +80,17 @@ public class ServerIntegrationTest {
     }
     
     @Test
+    public void getPeopleByHobby(){
+        given().pathParam("hobby", "ged").when().get("/api/person/hobby/{hobby}").then().statusCode(200).body("firstname", hasItems("Satan"));
+    }
+    @Test
+    public void getPersonByPhone(){
+//        given().pathParam("phonenumber", 66666666)
+//                .when().get("/api/person/phonenumber/{phonenumber}")    //SingleResult !!!!!!!!!!!!
+//                .then().statusCode(200).body("firstname", hasItems("Satan"));
+    }
+    
+    @Test
     public void testPut(){
         
         
