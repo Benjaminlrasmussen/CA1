@@ -23,16 +23,20 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ServerTest {
+public class ServerIntegrationTest {
 
-    public ServerTest() {
+    public ServerIntegrationTest() {
     }
 
     @BeforeClass
     public static void setUpClass() {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
+
         RestAssured.basePath = "/CA1/";
+
+        RestAssured.basePath = "/CA1";
+
         RestAssured.defaultParser = Parser.JSON;
     }
 
