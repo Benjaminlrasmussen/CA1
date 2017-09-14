@@ -1,59 +1,17 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\entity\Company.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\rest\PersonResource.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\rest\ZipcodeResource.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\facade\IPersonMapper.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\entity\Address.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\facade\Facade.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\rest\CompanyResource.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\entity\Hobby.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\backend\Main.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\facade\ICompanyMapper.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\rest\ApplicationConfig.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\entity\InfoEntity.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\facade\PersonMapper.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\entity\Person.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\entity\Phone.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\facade\CompanyMapper.java
-C:\Users\Bade\Documents\GitKraken\CA1\CA1\src\main\java\entity\CityInfo.java
-=======
-C:\Git\CA1\CA1\src\main\java\entity\Phone.java
-C:\Git\CA1\CA1\src\main\java\facade\ICompanyMapper.java
-C:\Git\CA1\CA1\src\main\java\facade\IPersonMapper.java
-C:\Git\CA1\CA1\src\main\java\rest\CompanyResource.java
-C:\Git\CA1\CA1\src\main\java\entity\Hobby.java
-C:\Git\CA1\CA1\src\main\java\facade\Facade.java
-C:\Git\CA1\CA1\src\main\java\facade\CompanyMapper.java
-C:\Git\CA1\CA1\src\main\java\entity\CityInfo.java
-C:\Git\CA1\CA1\src\main\java\rest\PersonResource.java
-C:\Git\CA1\CA1\src\main\java\entity\Address.java
-C:\Git\CA1\CA1\src\main\java\facade\PersonMapper.java
-C:\Git\CA1\CA1\src\main\java\entity\Company.java
-C:\Git\CA1\CA1\src\main\java\rest\ApplicationConfig.java
-C:\Git\CA1\CA1\src\main\java\backend\Main.java
-C:\Git\CA1\CA1\src\main\java\entity\InfoEntity.java
-C:\Git\CA1\CA1\src\main\java\entity\Person.java
->>>>>>> dev
-=======
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\backend\Main.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\Person.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\facade\CompanyMapper.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\Hobby.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\facade\PersonMapper.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\CityInfo.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\Address.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\facade\ICompanyMapper.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\rest\ApplicationConfig.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\rest\CompanyResource.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\Company.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\Phone.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\facade\Facade.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\entity\InfoEntity.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\facade\IPersonMapper.java
-C:\Users\Peter\Desktop\Projects\CA1\CA1\src\main\java\rest\PersonResource.java
-<<<<<<< HEAD
->>>>>>> dev
-=======
->>>>>>> 8927ba3b4933b3e006053db90ed5965cda3d87ff
->>>>>>> dev
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\InfoEntity.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\IPersonMapper.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Company.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\CompanyResource.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Phone.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Hobby.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\PersonMapper.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\ZipcodeResource.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Address.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\ApplicationConfig.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\Person.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\backend\Main.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\Facade.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\rest\PersonResource.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\CompanyMapper.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\facade\ICompanyMapper.java
+C:\Users\Bade\Documents\NetBeansProjects\CA1\CA1\src\main\java\entity\CityInfo.java
