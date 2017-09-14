@@ -2,6 +2,7 @@ var personListContainer = document.getElementById("table_list");
 var personById = document.getElementById("person_by_id");
 var fieldPersonById = document.getElementById("field_person_id");
 
+// Reusable all glory fetch method
 function printPersonTable(toUrl, method_type) {
 
     var url = toUrl;
@@ -46,6 +47,40 @@ function printPersonTable(toUrl, method_type) {
 
 
 }
+
+// Sort and collect from json object
+function getList(jsonUrl, type) {
+
+    var url = jsonUrl;
+    var conf = {method: "GET"};
+    var promise = fetch(url, conf);
+
+    var stringArray = [];
+
+    function findSub(array, location) {
+        for (var y = 0; y < array.length; y++) {
+            if (stringArray[0] !== array[y]) {
+                
+                stringArray.push(array[y].description);
+            }
+            
+        }
+        return stringArray;
+    }
+
+    promise.then(function (response) {
+        return response.json();
+    }).then(function (data) {
+
+        for (var i = 0; i < data.length; i++) {
+            console.log(findSub(data[i].hobbies, type));
+        }
+
+    });
+
+}
+
+getList("http://localhost:8080/CA1/api/person/complete", "description");
 
 // First page load
 printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
