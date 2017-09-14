@@ -24,7 +24,7 @@ public class Phone implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @Column(unique = true)
+    //@Column(unique = true)
     private int number;
     private String description;
 

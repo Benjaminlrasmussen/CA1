@@ -1,10 +1,13 @@
 package facade;
 
+import entity.CityInfo;
+import entity.Hobby;
 import entity.Person;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 
 public class PersonMapper implements IPersonMapper {
 
@@ -84,12 +87,44 @@ public class PersonMapper implements IPersonMapper {
         try
         {
             em.getTransaction().begin();
+
+            CityInfo info = null;
+            try
+            {
+                info = (CityInfo) em.createQuery("select ci from CityInfo ci where ci.zipCode = "
+                        + person.getAddress().getCityInfo().getZipCode()).getSingleResult();
+            } catch (NoResultException e)
+            {
+                System.err.println("City not found... creating it");
+            }
+
+            for (int i = 0; i < person.getHobbies().size(); i++)
+            {
+                try
+                {
+                    Hobby hobby = (Hobby) em.createQuery("select h from Hobby h where h.name like '"
+                            + person.getHobbies().get(i).getName() + "'").getSingleResult();
+                    
+                    // Sets the hobby to the one from db if found //
+                    person.getHobbies().set(i, hobby);
+                    
+                } catch (NoResultException e)
+                {
+                    System.err.println("Could not find hobby in database... creating it");
+                }
+            }
+
+            if (info != null)
+            {
+                person.getAddress().setCityInfo(info);
+            }
+
             em.persist(person);
             em.getTransaction().commit();
-
             return true;
         } catch (Exception e)
         {
+            System.err.println(e);
             return false;
         } finally
         {
@@ -115,8 +150,7 @@ public class PersonMapper implements IPersonMapper {
         } catch (Exception e)
         {
             return false;
-        }
-        finally
+        } finally
         {
             em.close();
         }

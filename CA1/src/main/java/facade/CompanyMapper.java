@@ -1,10 +1,12 @@
 package facade;
 
+import entity.CityInfo;
 import entity.Company;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 
 public class CompanyMapper implements ICompanyMapper {
 
@@ -21,10 +23,29 @@ public class CompanyMapper implements ICompanyMapper {
 
         try {
             em.getTransaction().begin();
+            
+            CityInfo info = null;
+            try
+            {
+                info = (CityInfo) em.createQuery("select ci from CityInfo ci where ci.zipCode = "
+                        + company.getAddress().getCityInfo().getZipCode()).getSingleResult();
+            } catch (NoResultException e)
+            {
+                System.err.println("City not found... creating it");
+            }
+            
+            if (info != null)
+            {
+                company.getAddress().setCityInfo(info);
+            }
+            
             em.persist(company);
             em.getTransaction().commit();
             return true;
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
+            System.err.println(e);
             return false;
         } finally {
             em.close();
@@ -73,11 +94,12 @@ public class CompanyMapper implements ICompanyMapper {
         EntityManager em = emf.createEntityManager();
         List<Company> companies = em.createQuery("select c from Company c").getResultList();
         List<Company> toBeRemoved = new ArrayList();
-        for (Company c : companies) {
-            if (c.getAddress().getCityInfo().getZipCode() != zipCode) {
+        for (Company c : companies)
+        {
+            if (c.getAddress().getCityInfo().getZipCode() != zipCode)
                 toBeRemoved.add(c);
-            }
         }
+        
         for (Company c : toBeRemoved) {
             companies.remove(c);
         }

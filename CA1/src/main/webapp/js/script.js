@@ -1,6 +1,7 @@
 var personListContainer = document.getElementById("table_list");
 var personById = document.getElementById("person_by_id");
 var fieldPersonById = document.getElementById("field_person_id");
+var hobbySelect = document.getElementById("hobbySelect");
 
 // Reusable all glory fetch method
 function printPersonTable(toUrl, method_type) {
@@ -60,10 +61,10 @@ function getList(jsonUrl, type) {
     function findSub(array, location) {
         for (var y = 0; y < array.length; y++) {
             if (stringArray[0] !== array[y]) {
-                
-                stringArray.push(array[y].description);
+
+                stringArray.push(array[y].name);
             }
-            
+
         }
         return stringArray;
     }
@@ -74,6 +75,9 @@ function getList(jsonUrl, type) {
 
         for (var i = 0; i < data.length; i++) {
             console.log(findSub(data[i].hobbies, type));
+        }
+        for (var key in stringArray) {
+            hobbySelect.innerHTML += "<option>" + stringArray[key] + "</option>";
         }
 
     });
@@ -90,4 +94,12 @@ personById.addEventListener("click", function () {
     printPersonTable("http://localhost:8080/CA1/api/person/complete/" + fieldPersonById.value, "GET");
 }, false);
 
+//On change event
+hobbySelect.addEventListener("change", function () {
+    if (hobbySelect.value !== "Sort on hobbies...") {
+        printPersonTable("http://localhost:8080/CA1/api/person/hobby/" + hobbySelect.value, "GET");
+    }else{
+        printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
+    }
+});
 
