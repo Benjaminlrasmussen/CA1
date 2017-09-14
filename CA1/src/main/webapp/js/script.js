@@ -1,11 +1,13 @@
 var personListContainer = document.getElementById("table_list");
 var personById = document.getElementById("person_by_id");
+var fieldPersonById = document.getElementById("field_person_id");
+var hobbySelect = document.getElementById("hobbySelect");
 
-function printPersonTable(toUrl, method) {
-    
+// Reusable all glory fetch method
+function printPersonTable(toUrl, method_type) {
 
     var url = toUrl;
-    var conf = {method: method};
+    var conf = {method: method_type};
     var promise = fetch(url, conf);
 
     function printSub(array, location) {
@@ -18,7 +20,7 @@ function printPersonTable(toUrl, method) {
             } else if (location === "description") {
                 stringStart += array[y].description + "<br>";
             }
-            
+
         }
 
         return stringStart + stringEnd;
@@ -37,7 +39,6 @@ function printPersonTable(toUrl, method) {
                     "<div class='table-cell'>" + data[i].firstname + "</div>" +
                     "<div class='table-cell'>" + data[i].lastname + "</div>" +
                     "<div class='table-cell'>" + data[i].address.street + "</div>" +
-                    
                     printSub(data[i].phones, "number") +
                     printSub(data[i].hobbies, "description");
 
@@ -45,10 +46,60 @@ function printPersonTable(toUrl, method) {
 
     });
 
+
 }
 
+// Sort and collect from json object
+function getList(jsonUrl, type) {
+
+    var url = jsonUrl;
+    var conf = {method: "GET"};
+    var promise = fetch(url, conf);
+
+    var stringArray = [];
+
+    function findSub(array, location) {
+        for (var y = 0; y < array.length; y++) {
+            if (stringArray[0] !== array[y]) {
+
+                stringArray.push(array[y].name);
+            }
+
+        }
+        return stringArray;
+    }
+
+    promise.then(function (response) {
+        return response.json();
+    }).then(function (data) {
+
+        for (var i = 0; i < data.length; i++) {
+            console.log(findSub(data[i].hobbies, type));
+        }
+        for (var key in stringArray) {
+            hobbySelect.innerHTML += "<option>" + stringArray[key] + "</option>";
+        }
+
+    });
+
+}
+
+getList("http://localhost:8080/CA1/api/person/complete", "description");
+
+// First page load
 printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
 
+// Button events
+personById.addEventListener("click", function () {
+    printPersonTable("http://localhost:8080/CA1/api/person/complete/" + fieldPersonById.value, "GET");
+}, false);
 
+//On change event
+hobbySelect.addEventListener("change", function () {
+    if (hobbySelect.value !== "Sort on hobbies...") {
+        printPersonTable("http://localhost:8080/CA1/api/person/hobby/" + hobbySelect.value, "GET");
+    }else{
+        printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
+    }
+});
 
-personById.addEventListener("click", printPersonTable("http://localhost:8080/CA1/api/person/complete/" + 1, "GET"), false);
