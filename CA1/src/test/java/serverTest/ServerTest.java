@@ -24,7 +24,7 @@ public class ServerTest {
     public static void setUpClass() {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
-        RestAssured.basePath = "/CA1";
+        RestAssured.basePath = "/CA1/api/person/complete";
         RestAssured.defaultParser = Parser.JSON;
     }
 
@@ -48,7 +48,11 @@ public class ServerTest {
 //    }
     @Test
     public void serverIsRunning() {
-        given().get("http://localhost:8080/CA1").then().statusCode(200);
+       // given().get("http://localhost:8080/CA1/api/person/complete").then().statusCode(200);
+    given().
+        when().get().
+        then().statusCode(200);
+    
     }
 
 }
