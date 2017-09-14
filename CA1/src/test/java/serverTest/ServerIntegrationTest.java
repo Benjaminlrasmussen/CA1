@@ -35,8 +35,6 @@ public class ServerIntegrationTest {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
 
-        RestAssured.basePath = "/CA1/";
-
         RestAssured.basePath = "/CA1";
 
         RestAssured.defaultParser = Parser.JSON;

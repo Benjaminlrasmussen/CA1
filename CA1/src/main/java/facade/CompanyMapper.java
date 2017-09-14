@@ -74,7 +74,7 @@ public class CompanyMapper implements ICompanyMapper {
     public Company getCompany(int cvr) {
         EntityManager em = emf.createEntityManager();
 
-        Company found = (Company) em.createQuery("select c from Company c where c.cvr = " + cvr).getSingleResult();
+        Company found = (Company) em.createQuery("select c from Company c where c.cvr = " + cvr).getResultList().get(0);
 
         em.close();
         return found;
