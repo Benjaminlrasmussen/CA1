@@ -68,15 +68,15 @@ public class ServerIntegrationTest {
 
     @Test
     public void getPerson() {
-        given().pathParam("id", 0).
+        given().pathParam("id", 1).
                 when().get("/api/person/complete/{id}").
                 then().statusCode(200).
-                body("id", hasItems(0));
+                body("id", hasItems(1));
     }
     
     @Test
     public void getCompany(){
-        given().pathParam("id", 9988998).when().get("/api/company/complete/{id}").then().statusCode(200).body("id", hasItems(2));
+        given().pathParam("id", 9988998).when().get("/api/company/complete/{id}").then().statusCode(200).body("id", hasItems(3));
     }
     
     @Test
@@ -85,11 +85,20 @@ public class ServerIntegrationTest {
     }
     @Test
     public void getPersonByPhone(){
-//        given().pathParam("phonenumber", 66666666)
-//                .when().get("/api/person/phonenumber/{phonenumber}")    //SingleResult !!!!!!!!!!!!
-//                .then().statusCode(200).body("firstname", hasItems("Satan"));
+        given().pathParam("phonenumber", 66666666)
+                .when().get("/api/person/phonenumber/{phonenumber}")    //SingleResult !!!!!!!!!!!!
+                .then().statusCode(200).body("firstname", hasItems("Satan"));
     }
     
+    @Test
+    public void getCompanyByEmployee(){
+        given().pathParam("employees", 700).when().get("/api/company/employees/{employees}")
+                .then().statusCode(200).body("name",hasItems("Google"));
+    }
+    @Test
+    public void getByZipcode(){
+        given().when().get("/api/zipcodes").then().statusCode(200).body("city", hasItems("Graested"));
+    }
     @Test
     public void testPut(){
         

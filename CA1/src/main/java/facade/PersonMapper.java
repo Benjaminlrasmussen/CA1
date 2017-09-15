@@ -35,7 +35,7 @@ public class PersonMapper implements IPersonMapper {
 
         try
         {
-            Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number = " + phoneNumber).getSingleResult();
+            Person p = (Person) em.createQuery("select p from Person p Join p.phones ph where ph.number = " + phoneNumber).getResultList().get(0);
             return p;
         } catch (NoResultException e)
         {

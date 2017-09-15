@@ -126,26 +126,26 @@ function getList(jsonUrl, type) {
 
 }
 
-getList("http://localhost:8080/CA1/api/person/complete", "description", "person");
+getList("/CA1/api/person/complete", "description", "person");
 
 // First page load
-printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET", "person");
+printPersonTable("/CA1/api/person/complete", "GET", "person");
 
 // Button events
 personById.addEventListener("click", function () {
-    printPersonTable("http://localhost:8080/CA1/api/person/complete/" + fieldPersonById.value, "GET", "person");
+    printPersonTable("/CA1/api/person/complete/" + fieldPersonById.value, "GET", "person");
 }, false);
 
 empByCount.addEventListener("click", function () {
-    printPersonTable("http://localhost:8080/CA1/api/company/employees/" + fieldEmpCount.value, "GET", "company");
+    printPersonTable("/CA1/api/company/employees/" + fieldEmpCount.value, "GET", "company");
 }, false);
 
 //On change event
 hobbySelect.addEventListener("change", function () {
     if (hobbySelect.value !== "Sort on hobbies...") {
-        printPersonTable("http://localhost:8080/CA1/api/person/hobby/" + hobbySelect.value, "GET", "person");
+        printPersonTable("/CA1/api/person/hobby/" + hobbySelect.value, "GET", "person");
     } else {
-        printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET", "person");
+        printPersonTable("/CA1/api/person/complete", "GET", "person");
     }
 });
 
