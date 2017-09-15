@@ -40,7 +40,7 @@ public class Main {
             List<Hobby> hobbies = new ArrayList();
             hobbies.add(new Hobby("Ged", "Leger med geder"));
             hobbies.add(new Hobby("Smoke", "Ryger halm"));
-            Person satan = new Person(0 + i * 3, "Satan@Profanemail.66" + i, phones, add, "Satan", "Lucifer", hobbies);
+            Person satan = new Person("Satan@Profanemail.66" + i, phones, add, "Satan", "Lucifer", hobbies);
 
             List<Phone> phones2 = new ArrayList();
             phones2.add(new Phone(22332233, "Bluuup"));
@@ -49,7 +49,7 @@ public class Main {
             List<Hobby> hobbies2 = new ArrayList();
             hobbies2.add(new Hobby("Kage", "Bager kager"));
             hobbies2.add(new Hobby("Dart", "Kaster med dværge"));
-            Person god = new Person(1 + i * 3, "God@Divinemail" + i + ".com", phones2, add2, "God", "Christ", hobbies2);
+            Person god = new Person("God@Divinemail" + i + ".com", phones2, add2, "God", "Christ", hobbies2);
 
             facade.addPerson(satan);
             facade.addPerson(god);

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -13,12 +15,11 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class InfoEntity implements Serializable
-{
+public class InfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(unique = true)
@@ -29,85 +30,76 @@ public class InfoEntity implements Serializable
     @ManyToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    public InfoEntity()
-    {
+    public InfoEntity() {
     }
 
-    public InfoEntity(int id, String email, List<Phone> phones, Address address)
-    {
+    public InfoEntity(String email, List<Phone> phones, Address address) {
+        this.phones = phones;
+        this.address = address;
+        this.email = email;
+    }
+
+    public InfoEntity(int id, String email, List<Phone> phones, Address address) {
         this.id = id;
         this.phones = phones;
         this.address = address;
         this.email = email;
     }
 
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public List<Phone> getPhones()
-    {
+    public List<Phone> getPhones() {
         return phones;
     }
 
-    public void setPhones(List<Phone> phones1)
-    {
+    public void setPhones(List<Phone> phones1) {
         this.phones = phones1;
     }
 
-    public Address getAddress()
-    {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(Address address)
-    {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (int) id;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof InfoEntity))
-        {
+        if (!(object instanceof InfoEntity)) {
             return false;
         }
         InfoEntity other = (InfoEntity) object;
-        if (this.id != other.id)
-        {
+        if (this.id != other.id) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "entity.InfoEntity[ id=" + id + " ]";
     }
 
