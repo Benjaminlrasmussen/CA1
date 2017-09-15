@@ -1,10 +1,12 @@
-var personListContainer = document.getElementById("table_list");
+var ListContainer = document.getElementById("table_list");
 var personById = document.getElementById("person_by_id");
 var fieldPersonById = document.getElementById("field_person_id");
 var hobbySelect = document.getElementById("hobbySelect");
+var fieldEmpCount = document.getElementById("field_emp_count");
+var empByCount = document.getElementById("emp_by_count");
 
 // Reusable all glory fetch method
-function printPersonTable(toUrl, method_type) {
+function printPersonTable(toUrl, method_type, data_type) {
 
     var url = toUrl;
     var conf = {method: method_type};
@@ -29,20 +31,51 @@ function printPersonTable(toUrl, method_type) {
     promise.then(function (response) {
         return response.json();
     }).then(function (data) {
-        personListContainer.innerHTML = "";
-        personListContainer.innerHTML += "<div class='table' id='t_container'></div";
-        var tableContainer = document.getElementById("t_container");
-        tableContainer.innerHTML = "";
-        for (var i = 0; i < data.length; i++) {
-            tableContainer.innerHTML += "<div class='table-row'><div class='table-cell'>" + data[i].id + "</div>" +
-                    "<div class='table-cell'>" + data[i].email + "</div>" +
-                    "<div class='table-cell'>" + data[i].firstname + "</div>" +
-                    "<div class='table-cell'>" + data[i].lastname + "</div>" +
-                    "<div class='table-cell'>" + data[i].address.street + "</div>" +
-                    printSub(data[i].phones, "number") +
-                    printSub(data[i].hobbies, "description");
 
+        if (data_type === "person" && data.length > 0 || data != null) {
+
+            ListContainer.innerHTML = "";
+            ListContainer.innerHTML += "<div class='table' id='t_container'></div";
+            var tableContainer = document.getElementById("t_container");
+            //tableContainer.innerHTML = "";
+            for (var i = 0; i < data.length; i++) {
+
+                tableContainer.innerHTML += "<div class='table-row'><div class='table-cell'>" + data[i].id + "</div>" +
+                        "<div class='table-cell'>" + data[i].email + "</div>" +
+                        "<div class='table-cell'>" + data[i].firstname + "</div>" +
+                        "<div class='table-cell'>" + data[i].lastname + "</div>" +
+                        "<div class='table-cell'>" + data[i].address.street + "</div>" +
+                        printSub(data[i].phones, "number") +
+                        printSub(data[i].hobbies, "description");
+
+            }
+
+        } else if (data_type === "company" && data.length > 0 || data != null) {
+
+            ListContainer.innerHTML = "";
+            ListContainer.innerHTML += "<div class='table' id='t_container'></div";
+            var tableContainer = document.getElementById("t_container");
+            //tableContainer.innerHTML = "";
+
+            for (var i = 0; i < data.length; i++) {
+                tableContainer.innerHTML += "<div class='table-row'><div class='table-cell'>" + data[i].id + "</div>" +
+                        "<div class='table-cell'>" + data[i].name + "</div>" +
+                        "<div class='table-cell'>" + data[i].description + "</div>" +
+                        "<div class='table-cell'>" + data[i].cvr + "</div>" +
+                        "<div class='table-cell'>" + data[i].numEmployees + "</div>" +
+                        printSub(data[i].phones, "number") +
+                        printSub(data[i].address, "street");
+
+
+            }
+
+        } else {
+            ListContainer.innerHTML = "No results";
         }
+
+
+
+
 
     });
 
@@ -93,22 +126,26 @@ function getList(jsonUrl, type) {
 
 }
 
-getList("http://localhost:8080/CA1/api/person/complete", "description");
+getList("http://localhost:8080/CA1/api/person/complete", "description", "person");
 
 // First page load
-printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
+printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET", "person");
 
 // Button events
 personById.addEventListener("click", function () {
-    printPersonTable("http://localhost:8080/CA1/api/person/complete/" + fieldPersonById.value, "GET");
+    printPersonTable("http://localhost:8080/CA1/api/person/complete/" + fieldPersonById.value, "GET", "person");
+}, false);
+
+empByCount.addEventListener("click", function () {
+    printPersonTable("http://localhost:8080/CA1/api/company/employees/" + fieldEmpCount.value, "GET", "company");
 }, false);
 
 //On change event
 hobbySelect.addEventListener("change", function () {
     if (hobbySelect.value !== "Sort on hobbies...") {
-        printPersonTable("http://localhost:8080/CA1/api/person/hobby/" + hobbySelect.value, "GET");
+        printPersonTable("http://localhost:8080/CA1/api/person/hobby/" + hobbySelect.value, "GET", "person");
     } else {
-        printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET");
+        printPersonTable("http://localhost:8080/CA1/api/person/complete", "GET", "person");
     }
 });
 

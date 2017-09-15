@@ -110,7 +110,7 @@ public class CompanyMapper implements ICompanyMapper {
     public List<Company> getCompaniesWithMoreThanXEmployees(int x) {
         EntityManager em = emf.createEntityManager();
 
-        List<Company> companies = em.createQuery("select c from Company c where c.numEmployees > " + x).getResultList();
+        List<Company> companies = em.createQuery("select c from Company c where c.numEmployees >= " + x).getResultList();
 
         return companies;
     }
