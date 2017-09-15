@@ -217,7 +217,8 @@ public class PersonResource {
                 }
             }
             
-        }entityAddress,firstName,lastName, entityHobbies);
+        }
+        Person person = new Person(email,phoneNumbers,entityAddress,firstName,lastName, entityHobbies);
         facade.addPerson(person);
     }
 
