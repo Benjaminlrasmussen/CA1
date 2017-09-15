@@ -32,7 +32,7 @@ function printPersonTable(toUrl, method_type, data_type) {
         return response.json();
     }).then(function (data) {
 
-        if (data_type === "person" && data.length > 0 || data != null) {
+        if (data_type === "person" && data.length > 0) {
 
             ListContainer.innerHTML = "";
             ListContainer.innerHTML += "<div class='table' id='t_container'></div";
@@ -50,7 +50,7 @@ function printPersonTable(toUrl, method_type, data_type) {
 
             }
 
-        } else if (data_type === "company" && data.length > 0 || data != null) {
+        } else if (data_type === "company" && data.length > 0) {
 
             ListContainer.innerHTML = "";
             ListContainer.innerHTML += "<div class='table' id='t_container'></div";
