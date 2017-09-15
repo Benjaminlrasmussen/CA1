@@ -41,8 +41,15 @@ public class FacadeCompanyTest {
 
     @BeforeClass
     public static void setUpClass() {
+        HashMap properties = new HashMap();
+        properties.put("javax.persistence.schema-generation.drop-script-source", "sql/drop_test.sql");
+        Persistence.generateSchema(PU, properties);
+
+        properties.remove("javax.persistence.schema-generation.drop-script-source");
+        
+        
         System.out.println("SetUp");
-        emf = Persistence.createEntityManagerFactory(PU);  
+        emf = Persistence.createEntityManagerFactory(PU, properties);  
         pm = new PersonMapper();
         cm = new CompanyMapper();
         facade = new Facade(emf, pm, cm);
