@@ -15,4 +15,5 @@ Og tak for morgenmad :)
 Ønsker og forslag til ændringer:
 -------------------------------
 -  2 uger pr emne istedet for 1 uge og så fint med samme antal opgaver
+-  Start med undervisning med maks 2 spørgsmål pr. emne, og vent med resten til opgave skrivning er gået igang.
 
