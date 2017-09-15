@@ -1,0 +1,19 @@
+Generel feedback:
+------------------
+Flere af os undrer os over at vi på semester 1 og 2 har brugt meget tid på servlet og jsp - selvom vi fik at vide at det var noget outdated i den profesionelle verden - og at vi nu på semester 3 får de mest hotte og relevante emner, med kun 1 uge pr emne til at lære i og aflevere en stak opgaver til fredag. Why the rush? Hvis det netop er super vigtigt, ville lidt mere tid pr emne være oplagt og ønskværdigt. Måske skulle fredagshjælpen rykkes til onsdag.
+
+Når nu vi er blevet skåret fra 3 store klasser til 2 gigantiske, ville det være fint med 2 lærere per klasse, eller nogle tutorer at spørge. Sjældent har læreren haft tid til at kunne nå rundt til alle bagefter emne-intro.
+
+Sidst men ikke mindst, har det været super spændende med REST som er smart og platformsuafhængigt. 
+
+Det ville måske også være fedt med en oversigt over de mest brugte ORM frameworks for kendte sprog som Java, C#, Python, PHP etc.
+
+Og tak for morgenmad :)
+
+
+
+Ønsker og forslag til ændringer:
+-------------------------------
+-  2 uger pr emne istedet for 1 uge og så fint med samme antal opgaver
+-  Start med undervisning med maks 2 spørgsmål pr. emne, og vent med resten til opgave skrivning er gået igang.
+

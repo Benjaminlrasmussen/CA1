@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CA1/target/CA1-1.0-SNAPSHOT.war
 CA1/target/CA1-1.0-SNAPSHOT/META-INF/context.xml
 CA1/target/CA1-1.0-SNAPSHOT/Tomcat.dpf
@@ -97,3 +98,8 @@ CA1/target/test-classes/.netbeans_automatic_build
 CA1/target/test-classes/facadeTest/FacadeCompanyTest.class
 CA1/target/test-classes/facadeTest/FacadePersonTest.class
 CA1/target/tomcat/conf/logging.properties
+=======
+/CA2/nbproject/
+/CA1/target/
+/CA1/nbproject/
+>>>>>>> dev

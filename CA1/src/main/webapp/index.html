@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h4><span>Bing</span> / Search Engine v.36.1.5</h4>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div id="search_container">
+                        <form>
+                            <select id="hobbySelect">
+                                <option>Sort on hobbies...</option>
+                            </select>
+
+                            -
+
+                            <select>
+                                <option>Sort on zipcodes...</option>
+                            </select>
+
+                            -
+
+                            <input type="number" value="0" id="field_emp_count"><input type="button" class="btn btn-secondary" id="emp_by_count" value="At least employee count">
+
+                            - 
+
+                            <input type="number" value="0" id="field_person_id"><input type="button" class="btn btn-secondary" id="person_by_id" value="Find person by id">
+
+                        </form>    
+                    </div>
+
+                    <hr>
+
+                    <div id="table_list"></div>
+
+                    <footer class="text-center">
+                        <hr>
+                        <div id="authors">Joachim Henvig Hansen, Benjamin Løvig Rasmussen, Peter Leonhardt Rasmussen, Mikkel Lund Clausen</div>
+                        <div id="class">DAT</div>
+                        <div id="group">15</div>
+                    </footer>
+
+
+                </div><!--col-->
+            </div><!--row-->
+        </div><!--container-->
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
